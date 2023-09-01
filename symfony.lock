@@ -113,9 +113,6 @@
             "ref": "751ee6748c1026fa4350c155d1b3a77b7ddca69c"
         }
     },
-    "limenius/liform": {
-        "version": "v0.10.2"
-    },
     "limenius/liform-bundle": {
         "version": "v0.10.2"
     },
