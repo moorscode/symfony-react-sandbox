@@ -17,7 +17,6 @@ use App\Entity\Recipe;
 use Limenius\Liform\Liform;
 use App\Form\Type\RecipeType;
 
-class AdminController extends Controller
 {
 
     /**
