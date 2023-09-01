@@ -24,6 +24,12 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    limenius_react.renderer:
+        class: App\ReactRenderer\ExternalReactRenderer
+        autowire: true
+        tags:
+            - { name: limenius_react.renderer }
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
     recipes.doctrine_image_listener:
