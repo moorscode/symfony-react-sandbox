@@ -2,20 +2,20 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
-use Lexik\Bundle\JWTAuthenticationBundle\Exception\InvalidTokenException;
+use App\Entity\Recipe;
+use App\Form\Type\RecipeType;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\ExpiredTokenException;
-use Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\CookieTokenExtractor;
+use Lexik\Bundle\JWTAuthenticationBundle\Exception\InvalidTokenException;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\PreAuthenticationJWTUserToken;
+use Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\CookieTokenExtractor;
+use Limenius\Liform\Liform;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 
-use App\Entity\Recipe;
-use Limenius\Liform\Liform;
-use App\Form\Type\RecipeType;
-
+class AdminController
 {
 
     /**
@@ -26,13 +26,14 @@ use App\Form\Type\RecipeType;
         try {
             $token = $this->getValidToken($request);
             $recipe = new Recipe();
-            $form = $this->createForm(RecipeType::Class, $recipe,
+            $form = $this->createForm(
+                RecipeType::Class, $recipe,
                 array('csrf_protection' => false)
-              );
+            );
 
             $recipes = $this->getDoctrine()
-              ->getRepository(Recipe::class)
-              ->findAll();
+                ->getRepository(Recipe::class)
+                ->findAll();
 
             return $this->render('admin/index.html.twig', [
                 'authToken' => $token,
@@ -47,8 +48,8 @@ use App\Form\Type\RecipeType;
                 'schema' => null,
                 'recipes' => [],
                 'initialValues' => null,
-                'props' => [ ],
-                ]);
+                'props' => [],
+            ]);
         }
     }
 
@@ -81,15 +82,20 @@ use App\Form\Type\RecipeType;
             $em->flush();
 
             $response = new Response($serializer->serialize($recipe, 'json'), 201);
-            $response->headers->set('Location', 'We should provide a url here, but this is a dummy example and there is no location where you can retrieve a single recipe, so...');
+            $response->headers->set(
+                'Location',
+                'We should provide a url here, but this is a dummy example and there is no location where you can retrieve a single recipe, so...'
+            );
             $response->headers->set('Content-Type', 'application/json');
+
             return $response;
         }
 
         return new JsonResponse($serializer->normalize($form), 400);
     }
 
-    private function getValidToken(Request $request) {
+    private function getValidToken(Request $request)
+    {
         $tokenExtractor = new CookieTokenExtractor('BEARER');
 
         if (false === ($jsonWebToken = $tokenExtractor->extract($request))) {

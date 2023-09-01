@@ -7318,6 +7318,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "limenius/liform-bundle": 20,
         "limenius/react-bundle": 20
     },
     "prefer-stable": false,
