@@ -1,6 +1,6 @@
 security:
-    encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+#    encoders:
+#        Symfony\Component\Security\Core\User\User: plaintext
     # https://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory:
@@ -20,29 +20,25 @@ security:
         api_login:
             pattern:  ^/api/login
             stateless: true
-            anonymous: true
             form_login:
                 check_path:               /api/login_check
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
 
-        admin:
-            pattern:   ^/admin/api
-            stateless: true
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
-
-        admin_api:
-            pattern:   ^/admin/api
-            stateless: true
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
-
-        main:
-            anonymous: ~
+#        admin:
+#            pattern:   ^/admin/api
+#            stateless: true
+#            guard:
+#                authenticators:
+#                    - lexik_jwt_authentication.jwt_token_authenticator
+#
+#        admin_api:
+#            pattern:   ^/admin/api
+#            stateless: true
+#            guard:
+#                authenticators:
+#                    - lexik_jwt_authentication.jwt_token_authenticator
 
     access_control:
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
