@@ -14,7 +14,7 @@ RUN apk --no-cache add \
     mysql-client \
     linux-headers \
     opendkim opendkim-utils \
-    tidyhtml=5.6.0-r0 \
+    tidyhtml=5.8.0-r2 \
     libstdc++ \
     jpegoptim \
     exiftool \

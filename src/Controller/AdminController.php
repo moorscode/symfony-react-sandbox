@@ -4,22 +4,34 @@ namespace App\Controller;
 
 use App\Entity\Recipe;
 use App\Form\Type\RecipeType;
+use App\Repository\RecipeRepository;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\ExpiredTokenException;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\InvalidTokenException;
+use Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTDecodeFailureException;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\PreAuthenticationJWTUserToken;
 use Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\CookieTokenExtractor;
 use Limenius\Liform\Liform;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class AdminController
+class AdminController extends AbstractController
 {
+    /**
+     * @var RecipeRepository
+     */
+    private $recipeRepository;
+
+    public function __construct(
+        RecipeRepository $recipeRepository
+    ) {
+        $this->recipeRepository = $recipeRepository;
+    }
 
     /**
-     * @Route("/admin/liform/", name="liform")
+     * #[Route("/admin/liform/", name: "liform")]
      */
     public function liformAction(Liform $liform, SerializerInterface $serializer, Request $request)
     {
@@ -27,13 +39,12 @@ class AdminController
             $token = $this->getValidToken($request);
             $recipe = new Recipe();
             $form = $this->createForm(
-                RecipeType::Class, $recipe,
+                RecipeType::class,
+                $recipe,
                 array('csrf_protection' => false)
             );
 
-            $recipes = $this->getDoctrine()
-                ->getRepository(Recipe::class)
-                ->findAll();
+            $recipes = $this->recipeRepository->findAll();
 
             return $this->render('admin/index.html.twig', [
                 'authToken' => $token,
@@ -42,7 +53,6 @@ class AdminController
                 'initialValues' => $serializer->normalize($form->createView()),
             ]);
         } catch (\Exception $e) {
-
             return $this->render('admin/index.html.twig', [
                 'authToken' => null,
                 'schema' => null,
@@ -54,9 +64,9 @@ class AdminController
     }
 
     /**
-     * @Route("/admin/api/form", methods={"GET"}, name="admin_form")
+     * #[Route("/admin/api/form", methods: {"GET"}, name: "admin_form")]
      */
-    public function getFormAction(Liform $liform, Request $request, SerializerInterface $serializer)
+    public function getFormAction(Liform $liform, SerializerInterface $serializer)
     {
         $recipe = new Recipe();
         $form = $this->createForm(RecipeType::Class, $recipe);
@@ -68,7 +78,7 @@ class AdminController
     }
 
     /**
-     * @Route("/admin/api/recipes", methods={"POST"}, name="liform_post")
+     * #[Route("/admin/api/recipes", methods: {"POST"}, name: "liform_post")]
      */
     public function liformPostAction(Request $request, SerializerInterface $serializer)
     {
@@ -77,9 +87,7 @@ class AdminController
         $form = $this->createForm(RecipeType::Class, $recipe);
         $form->submit($data);
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($recipe);
-            $em->flush();
+            $this->recipeRepository->save($recipe);
 
             $response = new Response($serializer->serialize($recipe, 'json'), 201);
             $response->headers->set(

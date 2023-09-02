@@ -2,40 +2,44 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
+use App\Repository\RecipeRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use App\Entity\Recipe;
+use Symfony\Component\HttpFoundation\Request;
 
-class ApiController
+class ApiController extends AbstractController
 {
     /**
-     * @Route("/api/recipes", name="api_recipes")
+     * @var RecipeRepository
+     */
+    private $recipeRepository;
+
+    public function __construct(
+        RecipeRepository $recipeRepository,
+    ) {
+        $this->recipeRepository = $recipeRepository;
+    }
+
+    /**
+     * #[Route("/api/recipes", name:"api_recipes")]
      *
      * Needed for client-side navigation after initial page load
      */
-    public function apiRecipesAction(Request $request)
+    public function apiRecipesAction(SerializerInterface $serializer)
     {
-        $serializer = $this->get('serializer');
-
-        $recipes = $this->getDoctrine()
-            ->getRepository(Recipe::class)
-            ->findAll();
+        $recipes = $this->recipeRepository->findAll();
 
         return new JsonResponse($serializer->normalize($recipes));
     }
 
     /**
-     * @Route("/api/recipes/{id}", name="api_recipe")
+     * #[Route("/api/recipes/{id}", name:"api_recipe")]
      *
      * Needed for client-side navigation after initial page load
      */
-    public function apiRecipeAction($id, Request $request)
+    public function apiRecipeAction($id, SerializerInterface $serializer)
     {
-        $recipe = $this->getDoctrine()
-            ->getRepository(Recipe::class)
-            ->find($id);
-        $serializer = $this->get('serializer');
+        $recipe = $this->recipeRepository->find($id);
 
         return new JsonResponse($serializer->normalize($recipe));
     }

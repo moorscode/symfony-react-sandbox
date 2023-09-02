@@ -7,7 +7,15 @@ services:
       - "8000:8000"
     volumes:
      - ./:/srv/app
-#    entrypoint: [ "bash", "-c", "sleep 10 && node ./external-server.js"]
+#    entrypoint: [ "bash", "-c", "sleep 10 && bin/console server:start 0.0.0.0:8000"]
+
+  node:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/srv/app
+    entrypoint: [ "bash", "-c", "sleep 10 && node ./external-server.js"]
 
   db:
     image: mysql:5.7
