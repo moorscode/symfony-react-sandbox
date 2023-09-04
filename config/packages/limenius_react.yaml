@@ -9,4 +9,4 @@ limenius_react:
         # Note that if enabled it will throw a (harmless) React warning
         trace: true
         server_bundle_path: null
-        server_socket_path: "unix://node:3000"
+        server_socket_path: "tcp://node:3000"

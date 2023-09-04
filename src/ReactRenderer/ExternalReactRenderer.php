@@ -14,7 +14,7 @@ use Psr\Log\LoggerInterface;
 class ExternalReactRenderer implements ReactRendererInterface
 {
     /** @var string */
-    protected $serverSocketPath = 'tcp://node:3000';
+    protected $serverSocketPath = '';
     /** @var bool */
     protected $failLoud = false;
     /** @var LoggerInterface */
