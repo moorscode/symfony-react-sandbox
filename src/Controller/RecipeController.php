@@ -52,10 +52,7 @@ class RecipeController extends AbstractController
 
         return $this->render('recipe/recipe.html.twig', [
             // A JSON string also works
-            'props' => $serializer->serialize(
-                ['recipe' => $recipe],
-                'json'
-            ),
+            'props' => $serializer->normalize(['recipe' => $recipe]),
         ]);
     }
 
@@ -71,9 +68,7 @@ class RecipeController extends AbstractController
 
         return $this->render('recipe-redux/home.html.twig', [
             // We pass an array as props
-            'initialState' => $serializer->normalize(
-                ['recipes' => $recipes]
-            ),
+            'initialState' => $serializer->normalize(['recipes' => $recipes]),
         ]);
     }
 
@@ -93,12 +88,7 @@ class RecipeController extends AbstractController
 
         return $this->render('recipe-redux/recipe.html.twig', [
             // A JSON string also works
-            'initialState' => $serializer->normalize(
-                [
-                    'recipe' => $recipe,
-                ],
-                'json'
-            ),
+            'initialState' => $serializer->normalize(['recipe' => $recipe]),
         ]);
     }
 
