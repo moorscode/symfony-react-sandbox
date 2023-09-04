@@ -14,7 +14,7 @@ use Psr\Log\LoggerInterface;
 class ExternalReactRenderer implements ReactRendererInterface
 {
     /** @var string */
-    protected $serverSocketPath;
+    protected $serverSocketPath = 'tcp://node:3000';
     /** @var bool */
     protected $failLoud = false;
     /** @var LoggerInterface */
@@ -84,8 +84,13 @@ class ExternalReactRenderer implements ReactRendererInterface
             }
         }
 
+        $evaluated = $result['html'];
+        if (!$result['hasErrors'] && is_array($evaluated) && array_key_exists('componentHtml', $evaluated)) {
+            $evaluated = $evaluated['componentHtml'];
+        }
+
         return new RenderResult(
-            $result['hasErrors'] ? $result['html'] : $result['html']['componentHtml'],
+            $evaluated,
             $result['consoleReplayScript'],
             $result['hasErrors']
         );
