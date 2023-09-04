@@ -2164,12 +2164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moorscode/ReactRenderer.git",
-                "reference": "15eee00d1b9873dcad71ff9310f2f57569cbd175"
+                "reference": "3c28cfcf0126376084867e29583273692999ec30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moorscode/ReactRenderer/zipball/15eee00d1b9873dcad71ff9310f2f57569cbd175",
-                "reference": "15eee00d1b9873dcad71ff9310f2f57569cbd175",
+                "url": "https://api.github.com/repos/moorscode/ReactRenderer/zipball/3c28cfcf0126376084867e29583273692999ec30",
+                "reference": "3c28cfcf0126376084867e29583273692999ec30",
                 "shasum": ""
             },
             "require": {
@@ -2223,7 +2223,7 @@
             "support": {
                 "source": "https://github.com/moorscode/ReactRenderer/tree/extract-render-coupling"
             },
-            "time": "2023-09-04T20:24:23+00:00"
+            "time": "2023-09-04T20:52:21+00:00"
         },
         {
             "name": "namshi/jose",

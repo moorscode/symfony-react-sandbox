@@ -52,10 +52,10 @@ services:
   node:
     build: docker/node
     ports:
-      - "3000:3000"
+      - "3000:3000/tcp"
     volumes:
       - ./:/srv/app
-    entrypoint: [ "sh", "-c", "sleep 10 && node ./external-server.js" ]
+    entrypoint: [ "sh", "-c", "sleep 1 && node ./external-server.js" ]
 
   db:
     image: mysql:5.7
@@ -83,5 +83,6 @@ volumes:
   caddy_data:
   caddy_config:
   mydb:
+  node_socket:
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###

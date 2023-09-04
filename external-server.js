@@ -3,7 +3,6 @@ const fs = require("fs");
 
 const bundlePath = "./var/webpack/";
 const bundleFileName = "server-bundle.js";
-const unixSocketPath = "var/node.sock";
 
 let currentArg;
 
@@ -93,18 +92,14 @@ fs.watchFile(bundlePath + bundleFileName, curr => {
     }
 });
 
-fs.stat(unixSocketPath, function (err) {
-    if (!err) {
-        fs.unlinkSync(unixSocketPath);
-    }
-    var unixServer = net.createServer(function (connection) {
-        handler.handle(connection);
-    });
 
-    unixServer.listen(unixSocketPath);
+const unixServer = net.createServer(function (connection) {
+    handler.handle(connection);
+});
 
-    process.on("SIGINT", () => {
-        unixServer.close();
-        process.exit();
-    });
+unixServer.listen(3000, '0.0.0.0');
+
+process.on("SIGINT", () => {
+    unixServer.close();
+    process.exit();
 });
