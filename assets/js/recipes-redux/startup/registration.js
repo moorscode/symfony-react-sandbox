@@ -4,5 +4,5 @@ import configureStore from "../store/RecipesStore";
 
 const recipesStore = configureStore;
 
-ReactOnRails.registerStore({ recipesStore });
-ReactOnRails.register({ RecipesAppRedux });
+ReactOnRails.registerStore({recipesStore});
+ReactOnRails.register({RecipesAppRedux});
