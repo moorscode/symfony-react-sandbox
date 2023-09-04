@@ -68,7 +68,11 @@ class ExternalReactRenderer implements ReactRendererInterface
         if (!$sock = stream_socket_client($this->serverSocketPath, $errno, $errstr)) {
             throw new \RuntimeException($errstr);
         }
-        stream_socket_sendto($sock, $this->wrap($componentName, $propsString, $uuid, $registeredStores, $trace)."\0");
+
+        $data = $this->wrap($componentName, $propsString, $uuid, $registeredStores, $trace);
+        $this->logger->debug('Sending data {data}', ['data' => $data]);
+
+        stream_socket_sendto($sock, $data."\0");
 
         if (false === $contents = stream_get_contents($sock)) {
             throw new \RuntimeException('Failed to read content from external renderer.');
@@ -88,6 +92,8 @@ class ExternalReactRenderer implements ReactRendererInterface
         if (!$result['hasErrors'] && is_array($evaluated) && array_key_exists('componentHtml', $evaluated)) {
             $evaluated = $evaluated['componentHtml'];
         }
+
+        $this->logger->debug('Server side rendering returned {contents}', ['contents' => $contents]);
 
         return new RenderResult(
             $evaluated,
