@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\RecipeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class RecipeController extends AbstractController
@@ -20,12 +21,11 @@ class RecipeController extends AbstractController
     }
 
     /**
-     * #[Route("/", name: "homepage")]
-     *
      * @param SerializerInterface $serializer
      *
      * @return Response
      */
+    #[Route("/", name: "homepage")]
     public function homeAction(SerializerInterface $serializer)
     {
         $recipes = $this->recipeRepository->findAll();
@@ -37,13 +37,12 @@ class RecipeController extends AbstractController
     }
 
     /**
-     * #[Route("/recipe/{id}", name: "recipe")]
-     *
      * @param string              $id
      * @param SerializerInterface $serializer
      *
      * @return Response
      */
+    #[Route("/recipe/{id}", name: "recipe")]
     public function recipeAction($id, SerializerInterface $serializer)
     {
         $recipe = $this->recipeRepository->find($id);
@@ -61,12 +60,11 @@ class RecipeController extends AbstractController
     }
 
     /**
-     * #[Route("/redux/", name: "homepage_redux")]
-     *
      * @param SerializerInterface $serializer
      *
      * @return Response
      */
+    #[Route("/redux/", name: "homepage_redux")]
     public function homeReduxAction(SerializerInterface $serializer)
     {
         $recipes = $this->recipeRepository->findAll();
@@ -80,13 +78,12 @@ class RecipeController extends AbstractController
     }
 
     /**
-     * #[Route("/redux/recipe/{id}", name: "recipe_redux")]
-     *
      * @param string              $id
      * @param SerializerInterface $serializer
      *
      * @return Response
      */
+    #[Route("/redux/recipe/{id}", name: "recipe_redux")]
     public function recipeReduxAction($id, SerializerInterface $serializer)
     {
         $recipe = $this->recipeRepository->find($id);

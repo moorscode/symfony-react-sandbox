@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Recipe;
 use App\Form\Type\RecipeType;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RecipeRepository;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\ExpiredTokenException;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\InvalidTokenException;
@@ -30,9 +31,7 @@ class AdminController extends AbstractController
         $this->recipeRepository = $recipeRepository;
     }
 
-    /**
-     * #[Route("/admin/liform/", name: "liform")]
-     */
+    #[Route("/admin/liform/", name: "liform")]
     public function liformAction(Liform $liform, SerializerInterface $serializer, Request $request)
     {
         try {
@@ -63,9 +62,7 @@ class AdminController extends AbstractController
         }
     }
 
-    /**
-     * #[Route("/admin/api/form", methods: {"GET"}, name: "admin_form")]
-     */
+    #[Route("/admin/api/form", condition: "context.getMethod() in ['GET']", name: "admin_form")]
     public function getFormAction(Liform $liform, SerializerInterface $serializer)
     {
         $recipe = new Recipe();
@@ -77,9 +74,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    /**
-     * #[Route("/admin/api/recipes", methods: {"POST"}, name: "liform_post")]
-     */
+    #[Route("/admin/api/recipes", condition: "context.getMethod() in ['POST']", name: "liform_post")]
     public function liformPostAction(Request $request, SerializerInterface $serializer)
     {
         $recipe = new Recipe();

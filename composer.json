@@ -1,80 +1,86 @@
 {
-    "name": "limenius/symfony-react-sandbox",
-    "license": "MIT",
-    "description": "Symfony React Sandbox, where to explore the integration with React and isomorphic or universal react rendering in Symfony and have profit with Webpack",
-    "type": "project",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/moorscode/ReactBundle"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/moorscode/ReactRenderer"
-        }
-    ],
-    "require": {
-        "php": "^8.0",
-        "doctrine/annotations": "2.0.1@stable",
-        "doctrine/doctrine-bundle": "2.10.2@stable",
-        "doctrine/doctrine-fixtures-bundle": "3.4.4@stable",
-        "doctrine/doctrine-migrations-bundle": "3.2.4@stable",
-        "doctrine/orm": "2.16.2@stable",
-        "league/uri": "7.2.1@stable",
-        "lexik/jwt-authentication-bundle": "^v2.19.1@stable",
-        "limenius/liform-bundle": "dev-master",
-        "limenius/react-bundle": "dev-use-own-fork@dev",
-        "phpdocumentor/reflection-docblock": "5.3.0@stable",
-        "phpstan/phpdoc-parser": "1.23.1@stable",
-        "symfony/asset": "v6.3.0@stable",
-        "symfony/console": "v6.3.4@stable",
-        "symfony/flex": "v2.3.3@stable",
-        "symfony/form": "v6.3.2@stable",
-        "symfony/framework-bundle": "v6.3.4@stable",
-        "symfony/property-access": "v6.3.2@stable",
-        "symfony/property-info": "v6.3.0@stable",
-        "symfony/serializer": "v6.3.4@stable",
-        "symfony/translation": "v6.3.3@stable",
-        "symfony/twig-bridge": "v6.3.2@stable",
-        "symfony/twig-bundle": "v6.3.0@stable",
-        "symfony/validator": "v6.3.4@stable",
-        "symfony/webpack-encore-bundle": "v2.0.1@stable",
-        "symfony/yaml": "v6.3.3@stable",
-        "twig/twig": "v3.7.1@stable",
-        "symfony/dotenv": "v6.3.0@stable"
+  "name": "limenius/symfony-react-sandbox",
+  "license": "MIT",
+  "description": "Symfony React Sandbox, where to explore the integration with React and isomorphic or universal react rendering in Symfony and have profit with Webpack",
+  "type": "project",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/moorscode/ReactBundle"
     },
-    "minimum-stability": "dev",
-    "config": {
-        "preferred-install": {
-            "*": "dist"
-        },
-        "sort-packages": true,
-        "allow-plugins": {
-            "ocramius/package-versions": true,
-            "symfony/flex": true
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        },
-        "post-install-cmd": [
-            "@auto-scripts"
-        ],
-        "post-update-cmd": [
-            "@auto-scripts"
-        ]
+    {
+      "type": "vcs",
+      "url": "https://github.com/moorscode/ReactRenderer"
     }
+  ],
+  "require": {
+    "php": "^8.0",
+    "doctrine/annotations": "2.0.1@stable",
+    "doctrine/doctrine-bundle": "2.10.2@stable",
+    "doctrine/doctrine-fixtures-bundle": "3.4.4@stable",
+    "doctrine/doctrine-migrations-bundle": "3.2.4@stable",
+    "doctrine/orm": "2.16.2@stable",
+    "league/uri": "7.2.1@stable",
+    "lexik/jwt-authentication-bundle": "^v2.19.1@stable",
+    "limenius/liform-bundle": "dev-master",
+    "limenius/react-bundle": "dev-use-own-fork@dev",
+    "phpdocumentor/reflection-docblock": "5.3.0@stable",
+    "phpstan/phpdoc-parser": "1.23.1@stable",
+    "symfony/asset": "v6.3.0@stable",
+    "symfony/cache": "v6.3.4@stable",
+    "symfony/console": "v6.3.4@stable",
+    "symfony/dotenv": "v6.3.0@stable",
+    "symfony/flex": "2.x-dev",
+    "symfony/form": "v6.3.2@stable",
+    "symfony/framework-bundle": "v6.3.4@stable",
+    "symfony/property-access": "v6.3.2@stable",
+    "symfony/property-info": "v6.3.0@stable",
+    "symfony/routing": "v6.3.3@stable",
+    "symfony/serializer": "v6.3.4@stable",
+    "symfony/translation": "v6.3.3@stable",
+    "symfony/twig-bridge": "v6.3.2@stable",
+    "symfony/twig-bundle": "v6.3.0@stable",
+    "symfony/validator": "v6.3.4@stable",
+    "symfony/expression-language": "v6.3.0@stable",
+    "symfony/webpack-encore-bundle": "v2.0.1@stable",
+    "symfony/yaml": "v6.3.3@stable",
+    "twig/twig": "v3.7.1@stable"
+  },
+  "minimum-stability": "dev",
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true,
+    "allow-plugins": {
+      "ocramius/package-versions": true,
+      "symfony/flex": true
+    }
+  },
+  "conflict": {
+    "symfony/symfony": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    },
+    "post-install-cmd": [
+      "@auto-scripts"
+    ],
+    "post-update-cmd": [
+      "@auto-scripts"
+    ]
+  }
 }

@@ -1,3 +1,4 @@
-framework:
-    router:
-        strict_requirements: ~
+#framework:
+#    router:
+#        strict_requirements: ~
+#        resource: "%kernel.project_dir%/config/routing.yaml"

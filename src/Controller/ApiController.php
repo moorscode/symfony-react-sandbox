@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Repository\RecipeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController extends AbstractController
 {
@@ -21,10 +21,9 @@ class ApiController extends AbstractController
     }
 
     /**
-     * #[Route("/api/recipes", name:"api_recipes")]
-     *
      * Needed for client-side navigation after initial page load
      */
+    #[Route("/api/recipes", name:"api_recipes")]
     public function apiRecipesAction(SerializerInterface $serializer)
     {
         $recipes = $this->recipeRepository->findAll();
@@ -33,10 +32,9 @@ class ApiController extends AbstractController
     }
 
     /**
-     * #[Route("/api/recipes/{id}", name:"api_recipe")]
-     *
      * Needed for client-side navigation after initial page load
      */
+    #[Route("/api/recipes/{id}", name:"api_recipe")]
     public function apiRecipeAction($id, SerializerInterface $serializer)
     {
         $recipe = $this->recipeRepository->find($id);
