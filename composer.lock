@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bfa68a8a00e0a11ed21579c672552b1",
+    "content-hash": "204c0b1b42655def7831cc9f5d44cba6",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1216,16 +1216,16 @@
         },
         {
             "name": "doctrine/migrations",
-            "version": "3.7.x-dev",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "432c9a0b61f5e0c76d61072d76e15855304df65c"
+                "reference": "e542ad8bcd606d7a18d0875babb8a6d963c9c059"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/432c9a0b61f5e0c76d61072d76e15855304df65c",
-                "reference": "432c9a0b61f5e0c76d61072d76e15855304df65c",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/e542ad8bcd606d7a18d0875babb8a6d963c9c059",
+                "reference": "e542ad8bcd606d7a18d0875babb8a6d963c9c059",
                 "shasum": ""
             },
             "require": {
@@ -1235,28 +1235,28 @@
                 "doctrine/event-manager": "^1.2 || ^2.0",
                 "php": "^8.1",
                 "psr/log": "^1.1.3 || ^2 || ^3",
-                "symfony/console": "^5.4 || ^6.0",
-                "symfony/stopwatch": "^5.4 || ^6.0",
+                "symfony/console": "^4.4.16 || ^5.4 || ^6.0",
+                "symfony/stopwatch": "^4.4 || ^5.4 || ^6.0",
                 "symfony/var-exporter": "^6.2"
             },
             "conflict": {
                 "doctrine/orm": "<2.12"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^12",
+                "doctrine/coding-standard": "^9",
                 "doctrine/orm": "^2.13",
                 "doctrine/persistence": "^2 || ^3",
                 "doctrine/sql-formatter": "^1.0",
                 "ext-pdo_sqlite": "*",
-                "phpstan/phpstan": "^1.10",
-                "phpstan/phpstan-deprecation-rules": "^1.1",
-                "phpstan/phpstan-phpunit": "^1.3",
-                "phpstan/phpstan-strict-rules": "^1.4",
-                "phpstan/phpstan-symfony": "^1.3",
-                "phpunit/phpunit": "^10.3",
-                "symfony/cache": "^5.4 || ^6.0",
-                "symfony/process": "^5.4 || ^6.0",
-                "symfony/yaml": "^5.4 || ^6.0"
+                "phpstan/phpstan": "^1.5",
+                "phpstan/phpstan-deprecation-rules": "^1",
+                "phpstan/phpstan-phpunit": "^1.1",
+                "phpstan/phpstan-strict-rules": "^1.1",
+                "phpstan/phpstan-symfony": "^1.1",
+                "phpunit/phpunit": "^9.5.24",
+                "symfony/cache": "^4.4 || ^5.4 || ^6.0",
+                "symfony/process": "^4.4 || ^5.4 || ^6.0",
+                "symfony/yaml": "^4.4 || ^5.4 || ^6.0"
             },
             "suggest": {
                 "doctrine/sql-formatter": "Allows to generate formatted SQL with the diff command.",
@@ -1298,7 +1298,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/migrations/issues",
-                "source": "https://github.com/doctrine/migrations/tree/3.7.x"
+                "source": "https://github.com/doctrine/migrations/tree/3.6.0"
             },
             "funding": [
                 {
@@ -1314,7 +1314,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-24T09:10:16+00:00"
+            "time": "2023-02-15T18:49:46+00:00"
         },
         {
             "name": "doctrine/orm",
@@ -1573,12 +1573,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/clock.git",
-                "reference": "5c5936021004ec1848f50287855c0b195ca95fdb"
+                "reference": "58dfd1d0255c87e12e96ef9a4e6f635c17f60a1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/clock/zipball/5c5936021004ec1848f50287855c0b195ca95fdb",
-                "reference": "5c5936021004ec1848f50287855c0b195ca95fdb",
+                "url": "https://api.github.com/repos/lcobucci/clock/zipball/58dfd1d0255c87e12e96ef9a4e6f635c17f60a1a",
+                "reference": "58dfd1d0255c87e12e96ef9a4e6f635c17f60a1a",
                 "shasum": ""
             },
             "require": {
@@ -1630,7 +1630,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-08-25T11:03:08+00:00"
+            "time": "2023-09-04T14:41:10+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -2104,12 +2104,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moorscode/ReactBundle.git",
-                "reference": "ef8960dce6bb6837dc5ea0261d6f2d290335bab6"
+                "reference": "e2744f3db8d1f3985ce4e1159de59f5a192bd48b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moorscode/ReactBundle/zipball/ef8960dce6bb6837dc5ea0261d6f2d290335bab6",
-                "reference": "ef8960dce6bb6837dc5ea0261d6f2d290335bab6",
+                "url": "https://api.github.com/repos/moorscode/ReactBundle/zipball/e2744f3db8d1f3985ce4e1159de59f5a192bd48b",
+                "reference": "e2744f3db8d1f3985ce4e1159de59f5a192bd48b",
                 "shasum": ""
             },
             "require": {
@@ -2156,7 +2156,7 @@
             "support": {
                 "source": "https://github.com/moorscode/ReactBundle/tree/use-own-fork"
             },
-            "time": "2023-09-04T09:48:16+00:00"
+            "time": "2023-09-04T20:46:41+00:00"
         },
         {
             "name": "limenius/react-renderer",
@@ -2164,17 +2164,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moorscode/ReactRenderer.git",
-                "reference": "353148c9d7d935c16e288c734c4cc534dad0f337"
+                "reference": "15eee00d1b9873dcad71ff9310f2f57569cbd175"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moorscode/ReactRenderer/zipball/353148c9d7d935c16e288c734c4cc534dad0f337",
-                "reference": "353148c9d7d935c16e288c734c4cc534dad0f337",
+                "url": "https://api.github.com/repos/moorscode/ReactRenderer/zipball/15eee00d1b9873dcad71ff9310f2f57569cbd175",
+                "reference": "15eee00d1b9873dcad71ff9310f2f57569cbd175",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=7.2.0",
+                "php": ">=8.0",
                 "psr/cache": "^3.0",
                 "symfony/http-foundation": "^6.3",
                 "twig/twig": "^2.4|^3.0"
@@ -2223,7 +2223,7 @@
             "support": {
                 "source": "https://github.com/moorscode/ReactRenderer/tree/extract-render-coupling"
             },
-            "time": "2023-09-04T09:47:49+00:00"
+            "time": "2023-09-04T20:24:23+00:00"
         },
         {
             "name": "namshi/jose",
@@ -6257,7 +6257,7 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "6.4.x-dev",
+            "version": "v6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
@@ -6299,7 +6299,7 @@
             "description": "Provides a way to profile code",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/stopwatch/tree/v6.3.0-RC1"
+                "source": "https://github.com/symfony/stopwatch/tree/v6.3.0"
             },
             "funding": [
                 {
@@ -7298,7 +7298,89 @@
             "time": "2022-06-03T18:03:27+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "symfony/web-profiler-bundle",
+            "version": "v6.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/web-profiler-bundle.git",
+                "reference": "6101b5ab7857c373d237e121f9060c68b32e1373"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/web-profiler-bundle/zipball/6101b5ab7857c373d237e121f9060c68b32e1373",
+                "reference": "6101b5ab7857c373d237e121f9060c68b32e1373",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/config": "^5.4|^6.0",
+                "symfony/framework-bundle": "^5.4|^6.0",
+                "symfony/http-kernel": "^6.3",
+                "symfony/routing": "^5.4|^6.0",
+                "symfony/twig-bundle": "^5.4|^6.0",
+                "twig/twig": "^2.13|^3.0.4"
+            },
+            "conflict": {
+                "symfony/form": "<5.4",
+                "symfony/mailer": "<5.4",
+                "symfony/messenger": "<5.4"
+            },
+            "require-dev": {
+                "symfony/browser-kit": "^5.4|^6.0",
+                "symfony/console": "^5.4|^6.0",
+                "symfony/css-selector": "^5.4|^6.0",
+                "symfony/stopwatch": "^5.4|^6.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bundle\\WebProfilerBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides a development tool that gives detailed information about the execution of any request",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "dev"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/web-profiler-bundle/tree/v6.3.2"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-07-19T20:17:28+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
@@ -7306,6 +7388,7 @@
         "doctrine/doctrine-bundle": 0,
         "doctrine/doctrine-fixtures-bundle": 0,
         "doctrine/doctrine-migrations-bundle": 0,
+        "doctrine/migrations": 0,
         "doctrine/orm": 0,
         "league/uri": 0,
         "lexik/jwt-authentication-bundle": 0,
@@ -7331,7 +7414,9 @@
         "symfony/expression-language": 0,
         "symfony/webpack-encore-bundle": 0,
         "symfony/yaml": 0,
-        "twig/twig": 0
+        "twig/twig": 0,
+        "symfony/stopwatch": 0,
+        "symfony/web-profiler-bundle": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,

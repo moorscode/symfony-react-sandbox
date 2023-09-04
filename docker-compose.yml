@@ -50,12 +50,12 @@ services:
         protocol: udp
 
   node:
-    build: .
+    build: docker/node
     ports:
       - "3000:3000"
     volumes:
       - ./:/srv/app
-    entrypoint: [ "bash", "-c", "sleep 10 && node ./external-server.js" ]
+    entrypoint: [ "sh", "-c", "sleep 10 && node ./external-server.js" ]
 
   db:
     image: mysql:5.7

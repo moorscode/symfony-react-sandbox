@@ -93,7 +93,7 @@ class RecipeController extends AbstractController
 
         return $this->render('recipe-redux/recipe.html.twig', [
             // A JSON string also works
-            'initialState' => $serializer->serialize(
+            'initialState' => $serializer->normalize(
                 [
                     'recipe' => $recipe,
                 ],

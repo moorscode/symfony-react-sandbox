@@ -7,6 +7,6 @@ limenius_react:
         # Replay every console.log message produced during server-side rendering
         # in the JavaScript console
         # Note that if enabled it will throw a (harmless) React warning
-        trace: false
+        trace: true
         server_bundle_path: null
-        server_socket_path: "http://localhost:3000"
+        server_socket_path: "unix://node:3000"

@@ -1,4 +1,5 @@
 limenius_react:
+    default_rendering: 3
     serverside_rendering:
         cache:
             enabled: true

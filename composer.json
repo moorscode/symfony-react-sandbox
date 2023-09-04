@@ -19,6 +19,7 @@
     "doctrine/doctrine-bundle": "2.10.2@stable",
     "doctrine/doctrine-fixtures-bundle": "3.4.4@stable",
     "doctrine/doctrine-migrations-bundle": "3.2.4@stable",
+    "doctrine/migrations": "3.6.0@stable",
     "doctrine/orm": "2.16.2@stable",
     "league/uri": "7.2.1@stable",
     "lexik/jwt-authentication-bundle": "^v2.19.1@stable",
@@ -46,7 +47,6 @@
     "symfony/yaml": "v6.3.3@stable",
     "twig/twig": "v3.7.1@stable"
   },
-  "minimum-stability": "dev",
   "config": {
     "preferred-install": {
       "*": "dist"
@@ -82,5 +82,10 @@
     "post-update-cmd": [
       "@auto-scripts"
     ]
+  },
+  "minimum-stability": "dev",
+  "require-dev": {
+    "symfony/stopwatch": "v6.3.0@stable",
+    "symfony/web-profiler-bundle": "v6.3.2@stable"
   }
 }

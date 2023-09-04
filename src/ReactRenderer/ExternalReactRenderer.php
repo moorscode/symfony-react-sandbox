@@ -17,7 +17,7 @@ class ExternalReactRenderer implements ReactRendererInterface
     protected $serverSocketPath;
     /** @var bool */
     protected $failLoud = false;
-    /** @var LoggerInterface|null */
+    /** @var LoggerInterface */
     private $logger;
     /** @var ContextProviderInterface */
     private $contextProvider;
@@ -30,7 +30,7 @@ class ExternalReactRenderer implements ReactRendererInterface
      */
     public function __construct(
         ContextProviderInterface $contextProvider,
-        LoggerInterface $logger = null
+        LoggerInterface $logger
     ) {
         $this->logger = $logger;
         $this->contextProvider = $contextProvider;
@@ -41,6 +41,7 @@ class ExternalReactRenderer implements ReactRendererInterface
      */
     public function setServerSocketPath(string $serverSocketPath): void
     {
+        $this->logger->debug($serverSocketPath);
         $this->serverSocketPath = $serverSocketPath;
     }
 
