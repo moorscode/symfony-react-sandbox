@@ -37,12 +37,14 @@ class ExternalReactRenderer implements ReactRendererInterface
     }
 
     /**
-     * @param string $serverSocketPath
+     * @param string|null $serverSocketPath
      */
-    public function setServerSocketPath(string $serverSocketPath): void
+    public function setServerSocketPath(?string $serverSocketPath): void
     {
-        $this->logger->debug($serverSocketPath);
-        $this->serverSocketPath = $serverSocketPath;
+        $this->logger->debug('Setting server socket path '.$serverSocketPath);
+        if ($serverSocketPath) {
+            $this->serverSocketPath = $serverSocketPath;
+        }
     }
 
     /**
