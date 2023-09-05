@@ -7,7 +7,6 @@ use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
 
-
 class FileToDataUriTransformer implements DataTransformerInterface
 {
     /**
@@ -30,7 +29,6 @@ class FileToDataUriTransformer implements DataTransformerInterface
         }
 
         return $this->storeTemporary($value);
-
     }
 
     public function storeTemporary($data)

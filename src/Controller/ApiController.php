@@ -56,5 +56,4 @@ class ApiController extends AbstractController
 
         return new JsonResponse($serializer->normalize($recipe));
     }
-
 }

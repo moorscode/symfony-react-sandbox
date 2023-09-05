@@ -3,6 +3,7 @@
     <description>ReactBundle coding standard.</description>
 
     <exclude-pattern>vendor/</exclude-pattern>
+    <exclude-pattern>var/</exclude-pattern>
 
     <rule ref="Symfony"/>
     <rule ref="PHPCompatibility"/>

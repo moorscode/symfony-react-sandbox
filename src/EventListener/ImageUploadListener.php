@@ -55,5 +55,4 @@ class ImageUploadListener
 
         return $fileName;
     }
-
 }

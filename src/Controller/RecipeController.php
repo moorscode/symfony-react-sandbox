@@ -90,5 +90,4 @@ class RecipeController extends AbstractController
             'initialState' => $serializer->normalize(['recipe' => $recipe]),
         ]);
     }
-
 }
