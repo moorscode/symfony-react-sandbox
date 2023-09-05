@@ -10,11 +10,8 @@ require_once dirname(__DIR__).'/vendor/autoload.php';
 
 (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
 
-//return function (array $context) {
-//    return new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
-//};
-
-if (true === $debug = (bool)$_SERVER['APP_DEBUG']) {
+$debug = (bool) $_SERVER['APP_DEBUG'];
+if (true === $debug) {
     umask(0000);
 
     Debug::enable();
