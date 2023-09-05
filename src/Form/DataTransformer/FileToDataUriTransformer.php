@@ -7,6 +7,9 @@ use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
 
+/**
+ * Converts a file to data URI.
+ */
 class FileToDataUriTransformer implements DataTransformerInterface
 {
     /**
@@ -17,12 +20,13 @@ class FileToDataUriTransformer implements DataTransformerInterface
         if (!$value instanceof \SplFileInfo) {
             return '';
         }
+        // todo: what should this do?
     }
 
     /**
      * {@inheritdoc}
      */
-    public function reverseTransform($value)
+    public function reverseTransform($value): ?File
     {
         if (empty($value)) {
             return null;
@@ -31,13 +35,19 @@ class FileToDataUriTransformer implements DataTransformerInterface
         return $this->storeTemporary($value);
     }
 
-    public function storeTemporary($data)
+    /**
+     * @param string $data
+     *
+     * @return File
+     */
+    public function storeTemporary(string $data): File
     {
         $prefix = 'data:';
-        if (substr($data, 0, strlen($prefix)) == $prefix) {
+        if (str_starts_with($data, $prefix)) {
             $data = substr($data, strlen($prefix));
         }
-        $dataPath = new DataPath($data);
+
+        $dataPath = DataPath::new($data);
         if (false === $path = tempnam($directory = sys_get_temp_dir(), 'Base64EncodedFile')) {
             throw new FileException(sprintf('Unable to create a file into the "%s" directory', $directory));
         }

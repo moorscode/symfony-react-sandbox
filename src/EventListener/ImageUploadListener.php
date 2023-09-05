@@ -1,36 +1,71 @@
 <?php
+
 namespace App\EventListener;
 
-use Symfony\Component\HttpFoundation\File\File;
-use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\ORM\Event\PreUpdateEventArgs;
-use League\Uri\Components\DataPath;
 use App\Entity\Recipe;
+use Doctrine\ORM\Event\PrePersistEventArgs;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Symfony\Component\HttpFoundation\File\File;
 
+/**
+ * Image upload listener.
+ */
 class ImageUploadListener
 {
-    private $targetDir;
+    private string $targetDir;
 
-    public function __construct($targetDir)
+    /**
+     * @param string $targetDir
+     */
+    public function __construct(string $targetDir)
     {
         $this->targetDir = $targetDir;
     }
 
-    public function prePersist(LifecycleEventArgs $args)
+    /**
+     * @param File $file
+     *
+     * @return string
+     */
+    public function upload(File $file): string
     {
-        $entity = $args->getEntity();
+        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+        $file->move($this->targetDir, $fileName);
+
+        return $fileName;
+    }
+
+    /**
+     * @param PrePersistEventArgs $args
+     *
+     * @return void
+     */
+    public function prePersist(PrePersistEventArgs $args): void
+    {
+        $entity = $args->getObject();
 
         $this->uploadFile($entity);
     }
 
-    public function preUpdate(PreUpdateEventArgs $args)
+    /**
+     * @param PreUpdateEventArgs $args
+     *
+     * @return void
+     */
+    public function preUpdate(PreUpdateEventArgs $args): void
     {
-        $entity = $args->getEntity();
+        $entity = $args->getObject();
 
         $this->uploadFile($entity);
     }
 
-    private function uploadFile($entity)
+    /**
+     * @param $entity
+     *
+     * @return void
+     */
+    private function uploadFile($entity): void
     {
         // upload only works for Recipe entities
         if (!$entity instanceof Recipe) {
@@ -45,14 +80,5 @@ class ImageUploadListener
 
         $fileName = $this->upload($file);
         $entity->setImage($fileName);
-    }
-
-    public function upload($file)
-    {
-        $fileName = md5(uniqid()).'.'.$file->guessExtension();
-
-        $file->move($this->targetDir, $fileName);
-
-        return $fileName;
     }
 }

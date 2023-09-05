@@ -6,6 +6,9 @@ use App\Entity\Recipe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * The recipe repository.
+ */
 class RecipeRepository extends ServiceEntityRepository
 {
     /**
