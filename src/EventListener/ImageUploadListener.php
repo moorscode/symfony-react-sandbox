@@ -7,7 +7,6 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 use League\Uri\Components\DataPath;
 use App\Entity\Recipe;
 
-
 class ImageUploadListener
 {
     private $targetDir;

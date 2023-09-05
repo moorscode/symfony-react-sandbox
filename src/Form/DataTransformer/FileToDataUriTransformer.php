@@ -2,11 +2,10 @@
 
 namespace App\Form\DataTransformer;
 
+use League\Uri\Components\DataPath;
 use Symfony\Component\Form\DataTransformerInterface;
-use Symfony\Component\Form\Exception\TransformationFailedException;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
-use League\Uri\Components\DataPath;
 
 
 class FileToDataUriTransformer implements DataTransformerInterface
@@ -16,7 +15,7 @@ class FileToDataUriTransformer implements DataTransformerInterface
      */
     public function transform($value)
     {
-        if (! $value instanceof \SplFileInfo) {
+        if (!$value instanceof \SplFileInfo) {
             return '';
         }
     }
@@ -38,13 +37,14 @@ class FileToDataUriTransformer implements DataTransformerInterface
     {
         $prefix = 'data:';
         if (substr($data, 0, strlen($prefix)) == $prefix) {
-                $data = substr($data, strlen($prefix));
+            $data = substr($data, strlen($prefix));
         }
         $dataPath = new DataPath($data);
         if (false === $path = tempnam($directory = sys_get_temp_dir(), 'Base64EncodedFile')) {
             throw new FileException(sprintf('Unable to create a file into the "%s" directory', $directory));
         }
-        $fileObject = $dataPath->save($path, 'w');
+        $dataPath->save($path, 'w');
+
         return new File($path);
     }
 }

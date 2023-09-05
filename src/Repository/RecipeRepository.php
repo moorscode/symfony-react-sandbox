@@ -8,11 +8,19 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class RecipeRepository extends ServiceEntityRepository
 {
+    /**
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Recipe::class);
     }
 
+    /**
+     * @param Recipe $recipe
+     *
+     * @return void
+     */
     public function save(Recipe $recipe): void
     {
         $this->_em->persist($recipe);

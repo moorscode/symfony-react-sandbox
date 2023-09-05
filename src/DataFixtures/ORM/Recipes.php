@@ -8,7 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class Recipes extends Fixture
 {
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur consequat efficitur venenatis. Proin eros nisl, maximus id tristique et, placerat a felis. Integer finibus lacinia pretium. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla ipsum libero, fringilla id mollis molestie, maximus quis lectus. Sed euismod, risus interdum mattis rhoncus, lectus sem lacinia eros, eu gravida sapien nunc eu risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras ultrices nunc eget congue viverra. Nulla finibus metus mi, in porttitor neque laoreet quis. Proin ut lacinia felis, sit amet mollis ligula. In tincidunt posuere volutpat. Morbi aliquet nunc dolor, ut consequat lacus maximus vitae. Donec orci sem, interdum quis scelerisque et, tincidunt ut nibh. Vivamus bibendum suscipit urna, et rutrum felis suscipit non.";
         $recipe1 = new Recipe();

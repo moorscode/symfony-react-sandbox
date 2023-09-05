@@ -7,14 +7,12 @@ const bundleFileName = "server-bundle.js";
 let currentArg;
 
 class Handler {
-    constructor()
-    {
+    constructor() {
         this.queue = [];
         this.initialized = false;
     }
 
-    handle(connection)
-    {
+    handle(connection) {
         const callback = () => {
             connection.setEncoding("utf8");
             let data = [];
@@ -38,8 +36,7 @@ class Handler {
         }
     }
 
-    initialize()
-    {
+    initialize() {
         console.log("Processing " + this.queue.length + " pending requests");
         var callback = this.queue.pop();
         while (callback) {
@@ -97,7 +94,7 @@ const unixServer = net.createServer(function (connection) {
     handler.handle(connection);
 });
 
-unixServer.listen(process.env.PORT, '0.0.0.0');
+unixServer.listen(process.env.PORT || 3000, '0.0.0.0');
 
 process.on("SIGINT", () => {
     unixServer.close();

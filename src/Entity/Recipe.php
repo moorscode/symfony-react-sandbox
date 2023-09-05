@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -27,6 +26,7 @@ class Recipe
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     *
      * @Assert\NotEqualTo("Beetlejuice")
      */
     private $name;
@@ -42,6 +42,7 @@ class Recipe
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)
+     *
      * @Assert\Image(
      *     minWidth = 200,
      *     minHeight = 200
@@ -55,7 +56,7 @@ class Recipe
      *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -67,7 +68,7 @@ class Recipe
      *
      * @return Recipe
      */
-    public function setName($name)
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -79,7 +80,7 @@ class Recipe
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -91,7 +92,7 @@ class Recipe
      *
      * @return Recipe
      */
-    public function setImage($image)
+    public function setImage(string $image): static
     {
         $this->image = $image;
 
@@ -103,7 +104,7 @@ class Recipe
      *
      * @return string
      */
-    public function getImage()
+    public function getImage(): string
     {
         return $this->image;
     }
@@ -115,7 +116,7 @@ class Recipe
      *
      * @return Recipe
      */
-    public function setDescription($description)
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -127,7 +128,7 @@ class Recipe
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }

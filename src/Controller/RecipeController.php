@@ -8,13 +8,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
+/**
+ * Recipe controller.
+ */
 class RecipeController extends AbstractController
 {
-    /**
-     * @var RecipeRepository
-     */
-    private $recipeRepository;
+    private RecipeRepository $recipeRepository;
 
+    /**
+     * @param RecipeRepository $recipeRepository
+     */
     public function __construct(RecipeRepository $recipeRepository)
     {
         $this->recipeRepository = $recipeRepository;
@@ -26,12 +29,11 @@ class RecipeController extends AbstractController
      * @return Response
      */
     #[Route("/", name: "homepage")]
-    public function homeAction(SerializerInterface $serializer)
+    public function homeAction(SerializerInterface $serializer): Response
     {
         $recipes = $this->recipeRepository->findAll();
 
         return $this->render('recipe/home.html.twig', [
-            // We pass an array as props
             'props' => $serializer->normalize(['recipes' => $recipes]),
         ]);
     }
@@ -43,7 +45,7 @@ class RecipeController extends AbstractController
      * @return Response
      */
     #[Route("/recipe/{id}", name: "recipe")]
-    public function recipeAction($id, SerializerInterface $serializer)
+    public function recipeAction(string $id, SerializerInterface $serializer): Response
     {
         $recipe = $this->recipeRepository->find($id);
         if (!$recipe) {
@@ -51,7 +53,6 @@ class RecipeController extends AbstractController
         }
 
         return $this->render('recipe/recipe.html.twig', [
-            // A JSON string also works
             'props' => $serializer->normalize(['recipe' => $recipe]),
         ]);
     }
@@ -62,12 +63,11 @@ class RecipeController extends AbstractController
      * @return Response
      */
     #[Route("/redux/", name: "homepage_redux")]
-    public function homeReduxAction(SerializerInterface $serializer)
+    public function homeReduxAction(SerializerInterface $serializer): Response
     {
         $recipes = $this->recipeRepository->findAll();
 
         return $this->render('recipe-redux/home.html.twig', [
-            // We pass an array as props
             'initialState' => $serializer->normalize(['recipes' => $recipes]),
         ]);
     }
@@ -79,7 +79,7 @@ class RecipeController extends AbstractController
      * @return Response
      */
     #[Route("/redux/recipe/{id}", name: "recipe_redux")]
-    public function recipeReduxAction($id, SerializerInterface $serializer)
+    public function recipeReduxAction(string $id, SerializerInterface $serializer): Response
     {
         $recipe = $this->recipeRepository->find($id);
         if (!$recipe) {
@@ -87,7 +87,6 @@ class RecipeController extends AbstractController
         }
 
         return $this->render('recipe-redux/recipe.html.twig', [
-            // A JSON string also works
             'initialState' => $serializer->normalize(['recipe' => $recipe]),
         ]);
     }

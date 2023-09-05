@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Recipe;
 use App\Form\Type\RecipeType;
-use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RecipeRepository;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\ExpiredTokenException;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\InvalidTokenException;
@@ -16,23 +15,37 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
+/**
+ * The admin controller.
+ */
 class AdminController extends AbstractController
 {
     /**
      * @var RecipeRepository
      */
-    private $recipeRepository;
+    private RecipeRepository $recipeRepository;
 
+    /**
+     * @param RecipeRepository $recipeRepository
+     */
     public function __construct(
         RecipeRepository $recipeRepository
     ) {
         $this->recipeRepository = $recipeRepository;
     }
 
+    /**
+     * @param Liform              $liform
+     * @param SerializerInterface $serializer
+     * @param Request             $request
+     *
+     * @return Response
+     */
     #[Route("/admin/liform/", name: "liform")]
-    public function liformAction(Liform $liform, SerializerInterface $serializer, Request $request)
+    public function liformAction(Liform $liform, SerializerInterface $serializer, Request $request): Response
     {
         try {
             $token = $this->getValidToken($request);
@@ -62,8 +75,14 @@ class AdminController extends AbstractController
         }
     }
 
-    #[Route("/admin/api/form", condition: "context.getMethod() in ['GET']", name: "admin_form")]
-    public function getFormAction(Liform $liform, SerializerInterface $serializer)
+    /**
+     * @param Liform              $liform
+     * @param SerializerInterface $serializer
+     *
+     * @return JsonResponse
+     */
+    #[Route("/admin/api/form", name: "admin_form", condition: "context.getMethod() in ['GET']")]
+    public function getFormAction(Liform $liform, SerializerInterface $serializer): JsonResponse
     {
         $recipe = new Recipe();
         $form = $this->createForm(RecipeType::Class, $recipe);
@@ -74,7 +93,13 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route("/admin/api/recipes", condition: "context.getMethod() in ['POST']", name: "liform_post")]
+    /**
+     * @param Request             $request
+     * @param SerializerInterface $serializer
+     *
+     * @return JsonResponse|Response
+     */
+    #[Route("/admin/api/recipes", name: "liform_post", condition: "context.getMethod() in ['POST']")]
     public function liformPostAction(Request $request, SerializerInterface $serializer)
     {
         $recipe = new Recipe();
@@ -97,6 +122,11 @@ class AdminController extends AbstractController
         return new JsonResponse($serializer->normalize($form), 400);
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return PreAuthenticationJWTUserToken|void
+     */
     private function getValidToken(Request $request)
     {
         $tokenExtractor = new CookieTokenExtractor('BEARER');
