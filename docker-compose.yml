@@ -49,10 +49,22 @@ services:
         published: ${HTTP3_PORT:-443}
         protocol: udp
 
-  node:
+  node1:
     build: docker/node
     ports:
       - "3000:3000/tcp"
+    environment:
+      - PORT=3000
+    volumes:
+      - ./:/srv/app
+    entrypoint: [ "sh", "-c", "sleep 1 && node ./external-server.js" ]
+
+  node2:
+    build: docker/node
+    ports:
+      - "3001:3001/tcp"
+    environment:
+      - PORT=3001
     volumes:
       - ./:/srv/app
     entrypoint: [ "sh", "-c", "sleep 1 && node ./external-server.js" ]

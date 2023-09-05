@@ -97,7 +97,7 @@ const unixServer = net.createServer(function (connection) {
     handler.handle(connection);
 });
 
-unixServer.listen(3000, '0.0.0.0');
+unixServer.listen(process.env.PORT, '0.0.0.0');
 
 process.on("SIGINT", () => {
     unixServer.close();

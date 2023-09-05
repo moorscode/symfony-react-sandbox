@@ -1,6 +1,6 @@
 FROM eu.gcr.io/myonlinestore-dev/php-dev-fpm:8.2-alpine-multiarch
 ARG TARGETPLATFORM
-EXPOSE 3000
+
 WORKDIR /srv/app
 VOLUME ["/srv/app"]
 
