@@ -1,56 +1,42 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import RecipeSearchList from "../../common/components/RecipeSearchList";
-import {Helmet} from "react-helmet";
 
-// Simple example of a React "smart" component
-export default class Recipes extends React.Component {
-    constructor(props, context) {
-        super(props, context);
+const Recipes = ({recipes, base}) => {
+    const [showRecipes, setShowRecipes] = useState(recipes);
+    const [loading, setLoading] = useState(!recipes);
 
-        if (this.props.recipes) {
-            this.state = {
-                recipes: this.props.recipes, loading: false
-            };
+    useEffect(() => {
+        if (!loading) {
             return;
         }
 
-        this.state = {
-            recipes: null, loading: true
-        };
+        fetch(base + "/api/recipes")
+            .then(response => {
+
+                return response.json();
+            })
+            .then(data => {
+                setShowRecipes(data);
+                setLoading(false);
+            });
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
     }
 
-
-    componentDidMount() {
-        if (this.state.loading) {
-            fetch(this.props.base + "/api/recipes")
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    this.setState({
-                        recipes: data, loading: false
-                    });
-                });
-        }
-    }
-
-    render() {
-        if (this.state.loading) {
-            return <div>Loading...</div>;
-        }
-
-        return (<div>
-            <Helmet>
-                <title>Recipes List</title>
-            </Helmet>
+    return (
+        <>
             <ol className="breadcrumb">
                 <li className="active">Recipes</li>
             </ol>
 
             <RecipeSearchList
-                recipes={this.state.recipes}
-                routePrefix={this.props.base}
+                recipes={recipes}
+                routePrefix={base}
             />
-        </div>);
-    }
+        </>
+    );
 }
+
+export default Recipes;

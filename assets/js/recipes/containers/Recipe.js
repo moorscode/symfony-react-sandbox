@@ -1,69 +1,41 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import RecipeWidget from "../../common/components/Recipe";
-import {Link} from "react-router-dom";
-import {Helmet} from "react-helmet";
+import {Link, useParams} from "react-router-dom";
 
 // Simple example of a React "smart" component
-export default class Recipe extends React.Component {
-    constructor(props, context)
-    {
-        super(props, context);
+const Recipe = ({recipe, base}) => {
+    const {id} = useParams();
+    const [showRecipe, setShowRecipe] = useState(recipe);
+    const [loading, setLoading] = useState(!recipe || recipe.id !== parseInt(id, 10));
 
-        //We check it there is no recipe (only client side)
-        //Or our id doesn't match the recipe that we received server-side
-        //
-        if (
-            !this.props.recipe ||
-            (this.props.match.params.id &&
-                this.props.match.params.id !== this.props.recipe.id)
-        ) {
-            this.state = {
-                recipe: null,
-                loading: true
-            };
-
+    useEffect(() => {
+        if (!loading) {
             return;
         }
 
-        this.state = {
-            recipe: this.props.recipe,
-            loading: false
-        };
+        fetch(base + "/api/recipes/" + id)
+            .then(response => response.json())
+            .then(data => {
+                setShowRecipe(data);
+                setLoading(false);
+            });
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
     }
 
-    componentDidMount()
-    {
-        if (this.state.loading) {
-            fetch(this.props.base + "/api/recipes/" + this.props.match.params.id)
-                .then(response => response.json())
-                .then(data => {
-                    this.setState({
-                        recipe: data,
-                        loading: false
-                    });
-                });
-        }
-    }
-
-    render()
-    {
-        if (this.state.loading) {
-            return <div>Loading...</div>;
-        }
-
-        return (
-            <div>
-                <Helmet>
-                    <title>{this.state.recipe.name}</title>
-                </Helmet>
-                <ol className="breadcrumb">
-                    <li>
-                        <Link to="/">Recipes</Link>
-                    </li>
-                    <li className="active">{this.state.recipe.name}</li>
-                </ol>
-                <RecipeWidget recipe={this.state.recipe}/>
-            </div>
-        );
-    }
+    return (
+        <>
+            <ol className="breadcrumb">
+                <li>
+                    <Link to="/">Recipes</Link>
+                </li>
+                <li className="active">{showRecipe.name}</li>
+            </ol>
+            <RecipeWidget recipe={showRecipe}/>
+        </>
+    );
 }
+
+export default Recipe;

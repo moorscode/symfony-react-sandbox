@@ -1,35 +1,32 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Actions from "../actions/recipesActions";
 import {connect} from "react-redux";
 import RecipeSearchList from "../../common/components/RecipeSearchList";
 
-class Recipes extends React.Component {
-    componentDidMount()
-    {
-        if (this.props.recipes) {
+const Recipes = ({recipes, baseUrl, fetching, dispatch}) => {
+
+    useEffect(() => {
+        if (recipes) {
             return;
         }
 
-        const {dispatch} = this.props;
-        dispatch(Actions.fetchRecipes(this.props.baseUrl));
+        dispatch(Actions.fetchRecipes(baseUrl));
+    }, []);
+
+    if (fetching || !recipes) {
+        return <div>Loading...</div>;
     }
 
-    render()
-    {
-        if (this.props.fetching || !this.props.recipes) {
-            return <div>Loading...</div>;
-        }
-
-        return (
-            <div>
-                <ol className="breadcrumb">
-                    <li className="active">Recipes</li>
-                </ol>
-                <RecipeSearchList recipes={this.props.recipes} routePrefix={""}/>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <ol className="breadcrumb">
+                <li className="active">Recipes</li>
+            </ol>
+            <RecipeSearchList recipes={recipes} routePrefix={""}/>
+        </div>
+    );
 }
+
 
 const mapStateToProps = state => ({
     recipes: state.recipesState.recipes,

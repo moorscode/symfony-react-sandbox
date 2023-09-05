@@ -1,5 +1,6 @@
 import React from "react";
-import {BrowserRouter, StaticRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
+import {StaticRouter} from "react-router-dom/server";
 import App from "./RecipesApp";
 
 export default (initialProps, context) => {
@@ -10,7 +11,7 @@ export default (initialProps, context) => {
     // title (the title)
     // other data you may need to render the page
     if (context.serverSide) {
-        return (
+        return () =>
             <StaticRouter
                 basename={context.base}
                 location={context.location}
@@ -18,12 +19,10 @@ export default (initialProps, context) => {
             >
                 <App initialProps={initialProps} appContext={context}/>
             </StaticRouter>
-        );
     }
 
-    return (
+    return () =>
         <BrowserRouter basename={context.base}>
             <App initialProps={initialProps} appContext={context}/>
         </BrowserRouter>
-    );
-};
+}

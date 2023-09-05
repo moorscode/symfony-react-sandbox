@@ -1,7 +1,8 @@
 import React from "react";
 import {Provider} from "react-redux";
 import Root from "../containers/root";
-import {BrowserRouter, StaticRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
+import {StaticRouter} from "react-router-dom/server";
 import ReactOnRails from "react-on-rails";
 
 // See documentation for https://github.com/reactjs/react-redux.
@@ -25,13 +26,12 @@ const mainNode = (_initialProps, context) => {
         );
     }
 
-    return (
+    return () =>
         <Provider store={store}>
             <Router>
                 <Root/>
             </Router>
-        </Provider>
-    );
-};
+        </Provider>;
+}
 
 export default mainNode;

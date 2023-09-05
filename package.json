@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack-serverside": "encore dev --config webpack.config.serverside.js --watch",
-    "webpack-dev": "encore dev-server",
+    "webpack-dev": "encore dev --config webpack.config.js --watch",
     "lint": "eslint assets/js",
     "node-ssr-server": "node external-server.js"
   },
@@ -35,15 +35,14 @@
     "js-yaml": "^3.12.0",
     "jwt-decode": "^2.2.0",
     "liform-react": "^0.9.0",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-helmet": "^5.2.0",
-    "react-on-rails": "^11.2.1",
-    "react-redux": "^5.0.0",
-    "react-router-dom": "^4.3.1",
-    "redux": "^4.0.1",
-    "redux-form": "^7.4.2",
-    "redux-thunk": "^2.3.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-on-rails": "^13.4.0",
+    "react-redux": "^8.1.2",
+    "react-router-dom": "^6.15.0",
+    "redux": "^4.2.1",
+    "redux-form": "^8.3.10",
+    "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
     "webpack": "^5.88.2",

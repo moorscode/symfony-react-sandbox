@@ -1,27 +1,23 @@
 import React from "react";
 import Recipes from "../containers/Recipes";
 import Recipe from "../containers/Recipe";
-import {Route} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
 const RecipesApp = ({initialProps, appContext}) => {
 
     return (
-        <div>
+        <Routes>
             <Route
                 path={"/recipe/:id"}
-                render={props => (
-                    <Recipe {...initialProps} base={appContext.base} {...props} />
-                )}
+                element={<Recipe {...initialProps} base={appContext.base} />}
             />
             <Route
                 path={"/"}
                 exact
-                render={props => (
-                    <Recipes {...initialProps} base={appContext.base} {...props} />
-                )}
+                element={<Recipes {...initialProps} base={appContext.base} />}
             />
-        </div>
+        </Routes>
     );
 };
 
-export default RecipesApp;
+export default (props) => <RecipesApp {...props} />;
