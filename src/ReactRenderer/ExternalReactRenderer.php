@@ -13,14 +13,7 @@ use Psr\Log\LoggerInterface;
  */
 class ExternalReactRenderer implements ReactRendererInterface
 {
-    /** @var string */
-    protected $serverSocketPath = '';
-    /** @var bool */
-    protected $failLoud = false;
-    /** @var LoggerInterface */
-    private $logger;
-    /** @var ContextProviderInterface */
-    private $contextProvider;
+    protected bool $failLoud = false;
 
     /**
      * Constructor.
@@ -30,13 +23,10 @@ class ExternalReactRenderer implements ReactRendererInterface
      * @param LoggerInterface          $logger
      */
     public function __construct(
-        string $serverSocketPath,
-        ContextProviderInterface $contextProvider,
-        LoggerInterface $logger
+        protected string $serverSocketPath,
+        private readonly ContextProviderInterface $contextProvider,
+        private readonly LoggerInterface $logger
     ) {
-        $this->serverSocketPath = $serverSocketPath;
-        $this->logger = $logger;
-        $this->contextProvider = $contextProvider;
 
         if (!str_contains($this->serverSocketPath, '://')) {
             throw new \InvalidArgumentException('Missing protocol for server socket path.');
