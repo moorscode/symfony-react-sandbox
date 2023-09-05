@@ -2095,12 +2095,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moorscode/ReactBundle.git",
-                "reference": "ef39bd6f5d7d513fa04d911fa0fe0b19595d15de"
+                "reference": "6ee13c8140854d9e7be7d4cc6df1c96c9c2683b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moorscode/ReactBundle/zipball/ef39bd6f5d7d513fa04d911fa0fe0b19595d15de",
-                "reference": "ef39bd6f5d7d513fa04d911fa0fe0b19595d15de",
+                "url": "https://api.github.com/repos/moorscode/ReactBundle/zipball/6ee13c8140854d9e7be7d4cc6df1c96c9c2683b5",
+                "reference": "6ee13c8140854d9e7be7d4cc6df1c96c9c2683b5",
                 "shasum": ""
             },
             "require": {
@@ -2147,7 +2147,7 @@
             "support": {
                 "source": "https://github.com/moorscode/ReactBundle/tree/use-own-fork"
             },
-            "time": "2023-09-05T07:07:33+00:00"
+            "time": "2023-09-05T11:26:47+00:00"
         },
         {
             "name": "limenius/react-renderer",
@@ -2155,12 +2155,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moorscode/ReactRenderer.git",
-                "reference": "b2913a0cc29ea70b5b5c5380a0e6c7b2b5ff31dc"
+                "reference": "caf64588f0c6a984ab652462281e0785379e79a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moorscode/ReactRenderer/zipball/b2913a0cc29ea70b5b5c5380a0e6c7b2b5ff31dc",
-                "reference": "b2913a0cc29ea70b5b5c5380a0e6c7b2b5ff31dc",
+                "url": "https://api.github.com/repos/moorscode/ReactRenderer/zipball/caf64588f0c6a984ab652462281e0785379e79a9",
+                "reference": "caf64588f0c6a984ab652462281e0785379e79a9",
                 "shasum": ""
             },
             "require": {
@@ -2214,7 +2214,7 @@
             "support": {
                 "source": "https://github.com/moorscode/ReactRenderer/tree/extract-render-coupling"
             },
-            "time": "2023-09-05T07:08:43+00:00"
+            "time": "2023-09-05T11:27:31+00:00"
         },
         {
             "name": "namshi/jose",
