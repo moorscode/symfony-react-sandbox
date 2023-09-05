@@ -3,4 +3,3 @@ limenius_react:
     serverside_rendering:
         cache:
             enabled: true
-            key: "recipes_app"

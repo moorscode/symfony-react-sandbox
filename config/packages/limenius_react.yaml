@@ -8,5 +8,3 @@ limenius_react:
         # in the JavaScript console
         # Note that if enabled it will throw a (harmless) React warning
         trace: true
-        server_bundle_path: null
-        server_socket_path: "tcp://node:3000"
