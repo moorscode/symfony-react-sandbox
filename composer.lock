@@ -2176,26 +2176,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moorscode/ReactBundle.git",
-                "reference": "6ee13c8140854d9e7be7d4cc6df1c96c9c2683b5"
+                "reference": "9f59b361ffc790dc0e9e4e178c830b40189630fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moorscode/ReactBundle/zipball/6ee13c8140854d9e7be7d4cc6df1c96c9c2683b5",
-                "reference": "6ee13c8140854d9e7be7d4cc6df1c96c9c2683b5",
+                "url": "https://api.github.com/repos/moorscode/ReactBundle/zipball/9f59b361ffc790dc0e9e4e178c830b40189630fd",
+                "reference": "9f59b361ffc790dc0e9e4e178c830b40189630fd",
                 "shasum": ""
             },
             "require": {
                 "limenius/react-renderer": "dev-extract-render-coupling@dev",
-                "php": ">=8.0",
+                "php": "^8.2",
                 "symfony/config": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
                 "symfony/dependency-injection": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
                 "symfony/http-kernel": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "v1.0.0@stable",
-                "escapestudios/symfony2-coding-standard": "^3.0@stable",
-                "php-parallel-lint/php-parallel-lint": "^v1.3@stable",
-                "phpcompatibility/php-compatibility": "^9.0@stable"
+                "dealerdirect/phpcodesniffer-composer-installer": "v1.0.0",
+                "escapestudios/symfony2-coding-standard": "^3.0",
+                "php-parallel-lint/php-parallel-lint": "^v1.3",
+                "phpcompatibility/php-compatibility": "^9.0"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -2228,7 +2228,7 @@
             "support": {
                 "source": "https://github.com/moorscode/ReactBundle/tree/use-own-fork"
             },
-            "time": "2023-09-05T11:26:47+00:00"
+            "time": "2023-09-05T16:57:26+00:00"
         },
         {
             "name": "limenius/react-renderer",
@@ -2236,17 +2236,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moorscode/ReactRenderer.git",
-                "reference": "caf64588f0c6a984ab652462281e0785379e79a9"
+                "reference": "24b276290ed788118bf30f0d77d30123a4fc26f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moorscode/ReactRenderer/zipball/caf64588f0c6a984ab652462281e0785379e79a9",
-                "reference": "caf64588f0c6a984ab652462281e0785379e79a9",
+                "url": "https://api.github.com/repos/moorscode/ReactRenderer/zipball/24b276290ed788118bf30f0d77d30123a4fc26f7",
+                "reference": "24b276290ed788118bf30f0d77d30123a4fc26f7",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=8.0",
+                "php": "^8.2",
                 "psr/cache": "^3.0",
                 "symfony/http-foundation": "^6.3",
                 "twig/twig": "^2.4|^3.0"
@@ -2295,7 +2295,7 @@
             "support": {
                 "source": "https://github.com/moorscode/ReactRenderer/tree/extract-render-coupling"
             },
-            "time": "2023-09-05T11:27:31+00:00"
+            "time": "2023-09-05T16:56:01+00:00"
         },
         {
             "name": "namshi/jose",
