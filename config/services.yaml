@@ -33,6 +33,7 @@ services:
         class: App\ReactRenderer\ExternalReactRenderer
         autowire: true
         arguments:
+            $serverSocketPath: 'unix://node:3000'
             $contextProvider: '@Limenius\ReactRenderer\Context\SymfonyContextProvider'
         tags:
             - { name: limenius_react.renderer }

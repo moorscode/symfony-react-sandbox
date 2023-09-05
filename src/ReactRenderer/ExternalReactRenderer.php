@@ -25,25 +25,21 @@ class ExternalReactRenderer implements ReactRendererInterface
     /**
      * Constructor.
      *
+     * @param string                   $serverSocketPath
      * @param ContextProviderInterface $contextProvider
      * @param LoggerInterface          $logger
      */
     public function __construct(
+        string $serverSocketPath,
         ContextProviderInterface $contextProvider,
         LoggerInterface $logger
     ) {
+        $this->serverSocketPath = $serverSocketPath;
         $this->logger = $logger;
         $this->contextProvider = $contextProvider;
-    }
 
-    /**
-     * @param string|null $serverSocketPath
-     */
-    public function setServerSocketPath(?string $serverSocketPath): void
-    {
-        $this->logger->debug('Setting server socket path '.$serverSocketPath);
-        if ($serverSocketPath) {
-            $this->serverSocketPath = $serverSocketPath;
+        if (!str_contains($this->serverSocketPath, '://')) {
+            throw new \InvalidArgumentException('Missing protocol for server socket path.');
         }
     }
 
@@ -63,10 +59,6 @@ class ExternalReactRenderer implements ReactRendererInterface
         array $registeredStores = array(),
         bool $trace = false
     ): RenderResultInterface {
-        if (strpos($this->serverSocketPath, '://') === false) {
-            $this->serverSocketPath = 'unix://'.$this->serverSocketPath;
-        }
-
         if (!$sock = stream_socket_client($this->serverSocketPath, $errno, $errstr)) {
             throw new \RuntimeException($errstr);
         }
@@ -76,7 +68,8 @@ class ExternalReactRenderer implements ReactRendererInterface
 
         stream_socket_sendto($sock, $data."\0");
 
-        if (false === $contents = stream_get_contents($sock)) {
+        $contents = stream_get_contents($sock);
+        if (false === $contents) {
             throw new \RuntimeException('Failed to read content from external renderer.');
         }
 
@@ -166,6 +159,7 @@ JS;
         bool $trace = false
     ): string {
         $context = $this->contextProvider->getContext(true);
+
         $contextArray = [
             'serverSide' => $context->isServerSide(),
             'href' => $context->href(),
