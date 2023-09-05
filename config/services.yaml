@@ -39,15 +39,15 @@ services:
         tags:
             - { name: limenius_react.renderer }
 
-    service.renderer.b:
-        class: App\ReactRenderer\ExternalReactRenderer
-        factory: 'App\ReactRenderer\Factory::createRenderer'
-        autowire: true
-        arguments:
-            $serverSocketPath: 'tcp://node2:3001'
-            $contextProvider: '@Limenius\ReactRenderer\Context\SymfonyContextProvider'
-        tags:
-            - { name: limenius_react.renderer }
+#    service.renderer.b:
+#        class: App\ReactRenderer\ExternalReactRenderer
+#        factory: 'App\ReactRenderer\Factory::createRenderer'
+#        autowire: true
+#        arguments:
+#            $serverSocketPath: 'tcp://node2:3001'
+#            $contextProvider: '@Limenius\ReactRenderer\Context\SymfonyContextProvider'
+#        tags:
+#            - { name: limenius_react.renderer }
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
