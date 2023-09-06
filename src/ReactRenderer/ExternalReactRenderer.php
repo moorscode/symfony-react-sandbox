@@ -105,7 +105,7 @@ class ExternalReactRenderer implements ReactRendererInterface
 
         $result = '';
         foreach ($registeredStores as $storeName => $reduxProps) {
-            $result .= "ReactOnRails.setStore('$storeName', ReactOnRails.getStoreGenerator('$storeName')($reduxProps, $context));\n";
+            $result .= "ReactOnRails.setStore('$storeName',ReactOnRails.getStoreGenerator('$storeName')($reduxProps,$context));";
         }
 
         return $result;
