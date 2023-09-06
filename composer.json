@@ -33,7 +33,6 @@
     "symfony/dotenv": "v6.3.0",
     "symfony/expression-language": "v6.3.0",
     "symfony/flex": "2.x-dev",
-    "symfony/form": "v6.3.2",
     "symfony/framework-bundle": "v6.3.4",
     "symfony/property-access": "v6.3.2",
     "symfony/property-info": "v6.3.0",

@@ -206,9 +206,6 @@
             "ref": "e921bdbfe20cdefa3b82f379d1cd36df1bc8d115"
         }
     },
-    "symfony/form": {
-        "version": "v4.0.1"
-    },
     "symfony/framework-bundle": {
         "version": "6.3",
         "recipe": {
@@ -243,14 +240,8 @@
     "symfony/mime": {
         "version": "v4.3.5"
     },
-    "symfony/options-resolver": {
-        "version": "v4.0.1"
-    },
     "symfony/polyfill-ctype": {
         "version": "v1.10.0"
-    },
-    "symfony/polyfill-intl-icu": {
-        "version": "v1.6.0"
     },
     "symfony/polyfill-intl-idn": {
         "version": "v1.12.0"
