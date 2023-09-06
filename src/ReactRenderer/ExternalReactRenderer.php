@@ -13,17 +13,17 @@ use Psr\Log\LoggerInterface;
  */
 class ExternalReactRenderer implements ReactRendererInterface
 {
-    protected bool $failLoud = false;
-
     /**
      * Constructor.
      *
      * @param string                   $serverSocketPath
+     * @param bool                     $failLoud
      * @param ContextProviderInterface $contextProvider
      * @param LoggerInterface          $logger
      */
     public function __construct(
         protected string $serverSocketPath,
+        private readonly bool $failLoud,
         private readonly ContextProviderInterface $contextProvider,
         private readonly LoggerInterface $logger
     ) {

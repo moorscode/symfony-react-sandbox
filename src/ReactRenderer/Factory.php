@@ -14,6 +14,7 @@ class Factory
      * Creates a renderer.
      *
      * @param string                   $serverSocketPath
+     * @param bool                     $failLoud
      * @param ContextProviderInterface $contextProvider
      * @param LoggerInterface          $logger
      *
@@ -21,9 +22,10 @@ class Factory
      */
     public static function createRenderer(
         string $serverSocketPath,
+        bool $failLoud,
         ContextProviderInterface $contextProvider,
         LoggerInterface $logger
     ): ExternalReactRenderer {
-        return new ExternalReactRenderer($serverSocketPath, $contextProvider, $logger);
+        return new ExternalReactRenderer($serverSocketPath, $failLoud, $contextProvider, $logger);
     }
 }
