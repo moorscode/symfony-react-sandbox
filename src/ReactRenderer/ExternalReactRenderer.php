@@ -57,7 +57,7 @@ class ExternalReactRenderer implements ReactRendererInterface
 
         $this->logger->debug(
             'Requesting server side rendering ({server}) with: {data}',
-            ['server' => $sock, 'data' => $data]
+            ['server' => $this->serverSocketPath, 'data' => $data]
         );
 
         stream_socket_sendto($sock, $data."\0");
