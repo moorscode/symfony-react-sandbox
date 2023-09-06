@@ -2176,12 +2176,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moorscode/ReactBundle.git",
-                "reference": "9f59b361ffc790dc0e9e4e178c830b40189630fd"
+                "reference": "85dfb7609838c6aeae4f6e972555bebff542b510"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moorscode/ReactBundle/zipball/9f59b361ffc790dc0e9e4e178c830b40189630fd",
-                "reference": "9f59b361ffc790dc0e9e4e178c830b40189630fd",
+                "url": "https://api.github.com/repos/moorscode/ReactBundle/zipball/85dfb7609838c6aeae4f6e972555bebff542b510",
+                "reference": "85dfb7609838c6aeae4f6e972555bebff542b510",
                 "shasum": ""
             },
             "require": {
@@ -2228,7 +2228,7 @@
             "support": {
                 "source": "https://github.com/moorscode/ReactBundle/tree/use-own-fork"
             },
-            "time": "2023-09-05T16:57:26+00:00"
+            "time": "2023-09-06T07:04:56+00:00"
         },
         {
             "name": "limenius/react-renderer",

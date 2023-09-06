@@ -1,6 +1,6 @@
 limenius_react:
-    # Other options are "server_side" and "client_side"
-    default_rendering: 3
+    # Options are "server_side", "client_side" and "both" (default)
+    default_rendering: "both"
     serverside_rendering:
         # In case of error in server-side rendering, throw exception
         fail_loud: false
