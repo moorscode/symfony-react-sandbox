@@ -23,8 +23,6 @@
     "doctrine/orm": "2.16.2@stable",
     "league/uri": "^7.2",
     "league/uri-components": "^7.0",
-    "lexik/jwt-authentication-bundle": "^v2.19.1",
-    "limenius/liform-bundle": "dev-master@dev",
     "limenius/react-bundle": "dev-use-own-fork@dev",
     "limenius/react-renderer": "@dev",
     "phpdocumentor/reflection-docblock": "5.3.0",
