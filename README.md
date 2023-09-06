@@ -1,11 +1,9 @@
 Symfony React Sandbox
 =====================
 
-This sandbox provides an example of usage of [ReactBundle](https://github.com/limenius/ReactBundle) with server and client-side React rendering (universal/isomorphical) and its integration with a fitting Webpack Encore setup. It also provides an example of the usage of [LiformBundle](https://github.com/Limenius/LiformBundle) to generate a json-schema from Symfony forms and a forms and validation in React from that schema.
+This sandbox provides an example of usage of [ReactBundle](https://github.com/limenius/ReactBundle) with server and client-side React rendering (universal/isomorphical) and its integration with a fitting Webpack Encore setup.
 
 **Note**: If you are new to React.js, please note that this sandbox or the bundle are not by any means required to use React with Symfony. This showcases how to do some advanced features such as Server Side Rendering, a better integration with forms, injecting components directly from Twig tags, that may be difficult.
-
-You can see this example live at http://symfony-react.limenius.com/
 
 It is also a fully functional Symfony application that you can use as skeleton for new projects.
 
@@ -15,8 +13,6 @@ It has three main areas of interest:
 * The JavaScript and CSS (SCSS) code under `assets/`.
 * The Webpack Encore configuration for client and server-side rendering at `webpack.config.js` and `webpack.config.serverside.js`.
 
-Note that you won't need to run an external node server to do server-side rendering, as we are using [PhpExecJs](https://github.com/nacmartin/phpexecjs) although ReactBundle would make it possible if we neeeded that setup.
-
 If you are interested on this, please also check out **[React on Rails](https://github.com/shakacode/react_on_rails)** by Shakacode, as we are here basically replicating their fantastic job.
 
 
@@ -25,13 +21,11 @@ How to run it
 
 Requirements: you need a recent version of node, and Webpack installed (you can install it with `npm install -g webpack webpack-dev-server`).
 
-    git clone https://github.com/Limenius/symfony-react-sandbox.git
-    cd symfony-react-sandbox
-    composer install
-    npm install # or yarn install if you use yarn
+    _Instructions here_
 
 Configure your database editing `.env` and setting your database name, user and password. Then, create the schema and load fixtures:
 
+    _Docker compose commands..._
     bin/console doctrine:database:create --if-not-exists
     bin/console doctrine:schema:create
     bin/console doctrine:fixtures:load
@@ -51,23 +45,23 @@ And then, run a live server with Webpack hot-reloading of assets:
 
 * Building the server-side react Webpack bundle.
 
-    ./node_modules/.bin/encore dev --config webpack.config.serverside.js --watch
+    ./node_modules/.bin/encore dev --config webpack.config.serverside.js
 
-or simply `npm run webpack-serverside`
+or simply `yarn run webpack-serverside`
 
 * And, In a different terminal/screen/tmux, the hot-reloading webpack server for the client assets:
 
-    ./node_modules/.bin/encore dev-server
+    ./node_modules/.bin/encore dev --config webpack.config.js
 
-or simply `npm run webpack-dev`
+or simply `yarn run webpack-dev`
 
 (Note that you need to load the resulting build bundle in your template, as we do [here](https://github.com/Limenius/symfony-react-sandbox/blob/132d5c716b8de21e2bbbeb457ccc80ea177660ea/app/Resources/views/base.html.twig#L54))
 
-* Also, you may want to run the Symfony server:
+Start the docker containers:
 
-    bin/console server:start
+    docker-compose up -d
 
-After this, visit [http://127.0.0.1:8000](http://127.0.0.1:8000).
+After this, visit [https://127.0.0.1:8783](http://127.0.0.1:8000).
 
 Why Webpack?
 ===========
@@ -156,24 +150,6 @@ There is a working example using Redux at `assets/js/recipes-redux/`, and availa
 
 Note that the presentational components of both versions are shared, as they don't know about Redux.
 
-Liform example
-=============
-
-There is also an example of working with forms using [LiformBundle](https://github.com/Limenius/LiformBundle), so Symfony forms are serialized into [json-schema](http://json-schema.org/), and then generated automatically in React, and can be validated against the generated schema. The idea is similar as what `$form->createView()` does, but for APIs.
-
-This example can be accessed at the URI `/admin/liform/`.
-
-Usage with JWT
-=============
-
-This sandbox uses [LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle) to handle authentication in the admin area.
-
-If you don't plan to use server side rendering in private areas, using JWT is straightforward. However, as this is a sandbox, so a place to try things, we have provided an example that works also with server side rendering. This involves setting the JWT token in a cookie after the login and extracting the token and validating it in the controller that loads the admin panel.
-
-The relevant pieces of code involved are [here](https://github.com/Limenius/symfony-react-sandbox/blob/symfony4/assets/js/liform/actions/index.js) and [here](https://github.com/Limenius/symfony-react-sandbox/blob/symfony4/src/Controller/AdminController.php).
-
-Note that if you plan to copy and paste this sandbox and use it for something serious, you **should** regenerate the crypto keys following the documentation of LexikJWTAuthenticationBundle.
-
 Server side rendering modes
 ===========================
 
@@ -204,3 +180,4 @@ Credits
 =======
 
 This project is heavily inspired by the great [React on Rails](https://github.com/shakacode/react_on_rails#), and also makes use of its JavaScript package.
+This project is heavily inspired by the Limenius ReactRenderer/ReactBundle project. 
