@@ -62,7 +62,7 @@ class RecipeController extends AbstractController
      *
      * @return Response
      */
-    #[Route("/redux/", name: "homepage_redux")]
+    #[Route("/redux", name: "homepage_redux")]
     public function homeReduxAction(SerializerInterface $serializer): Response
     {
         $recipes = $this->recipeRepository->findAll();
