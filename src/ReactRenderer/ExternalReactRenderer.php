@@ -46,15 +46,15 @@ class ExternalReactRenderer implements ReactRendererInterface
         string $componentName,
         string $propsString,
         string $uuid,
-        array $registeredStores = array(),
+        array $registeredStores = [],
         bool $trace = false
     ): RenderResultInterface {
         if (!$sock = stream_socket_client($this->serverSocketPath, $errno, $errstr)) {
             throw new \RuntimeException($errstr);
         }
 
-        $data = $this->wrap($componentName, $propsString, $uuid, $registeredStores, $trace);
         $this->logger->debug('Sending data {data}', ['data' => $data]);
+        $data = $this->getRemoteRenderingCode($componentName, $propsString, $uuid, $registeredStores, $trace);
 
         stream_socket_sendto($sock, $data."\0");
 
@@ -135,11 +135,11 @@ class ExternalReactRenderer implements ReactRendererInterface
      *
      * @return string
      */
-    protected function wrap(
+    protected function getRemoteRenderingCode(
         string $name,
         string $propsString,
         string $uuid,
-        array $registeredStores = array(),
+        array $registeredStores = [],
         bool $trace = false
     ): string {
         $context = $this->contextProvider->getContext(true);
