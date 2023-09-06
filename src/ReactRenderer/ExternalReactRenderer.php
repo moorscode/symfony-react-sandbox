@@ -93,21 +93,15 @@ class ExternalReactRenderer implements ReactRendererInterface
      *
      * @return string
      */
-    protected function initializeReduxStores(array $registeredStores = array(), string $context = ''): string
+    protected function initializeReduxStores(array $registeredStores = [], string $context = ''): string
     {
-        if (!is_array($registeredStores) || empty($registeredStores)) {
+        if (empty($registeredStores)) {
             return '';
         }
 
-        $result = 'var reduxProps, context, storeGenerator, store'.PHP_EOL;
+        $result = '';
         foreach ($registeredStores as $storeName => $reduxProps) {
-            $result .= <<<JS
-reduxProps = $reduxProps;
-context = $context;
-storeGenerator = ReactOnRails.getStoreGenerator('$storeName');
-store = storeGenerator(reduxProps, context);
-ReactOnRails.setStore('$storeName', store);
-JS;
+            $result .= "ReactOnRails.setStore('$storeName', ReactOnRails.getStoreGenerator('$storeName')($reduxProps, $context));\n";
         }
 
         return $result;
