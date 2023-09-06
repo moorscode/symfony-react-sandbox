@@ -147,36 +147,39 @@ class ExternalReactRenderer implements ReactRendererInterface
         bool $trace = false
     ): string {
         $context = $this->contextProvider->getContext(true);
+        $jsContext = json_encode(
+            [
+                'serverSide' => $context->isServerSide(),
+                'href' => $context->href(),
+                'location' => $context->requestUri(),
+                'scheme' => $context->scheme(),
+                'host' => $context->host(),
+                'port' => $context->port(),
+                'base' => $context->baseUrl(),
+                'pathname' => $context->pathInfo(),
+                'search' => $context->queryString(),
+            ]
+        );
 
-        $contextArray = [
-            'serverSide' => $context->isServerSide(),
-            'href' => $context->href(),
-            'location' => $context->requestUri(),
-            'scheme' => $context->scheme(),
-            'host' => $context->host(),
-            'port' => $context->port(),
-            'base' => $context->baseUrl(),
-            'pathname' => $context->pathInfo(),
-            'search' => $context->queryString(),
-        ];
-
-        $traceStr = $trace ? 'true' : 'false';
-        $jsContext = json_encode($contextArray);
+        $traceStr = json_encode($trace);
 
         $initializedReduxStores = $this->initializeReduxStores($registeredStores, $jsContext);
 
-        return <<<JS
+        $template = '
 (function() {
-  $initializedReduxStores
+  %1$s
   return ReactOnRails.serverRenderReactComponent({
-    name: '$name',
-    domNodeId: '$uuid',
-    props: $propsString,
-    trace: $traceStr,
-    railsContext: $jsContext,
+    name: \'%2$s\',
+    domNodeId: \'%3$s\',
+    props: %4$s,
+    trace: %5$s,
+    railsContext: %6$s
   });
 })();
-JS;
+';
+        $template = str_replace("\n", '', $template);
+
+        return sprintf($template, $initializedReduxStores, $name, $uuid, $propsString, $traceStr, $jsContext);
     }
 
     /**
