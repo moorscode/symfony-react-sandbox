@@ -49,12 +49,16 @@ class ExternalReactRenderer implements ReactRendererInterface
         array $registeredStores = [],
         bool $trace = false
     ): RenderResultInterface {
-        if (!$sock = stream_socket_client($this->serverSocketPath, $errno, $errstr)) {
-            throw new \RuntimeException($errstr);
+        if (!$sock = stream_socket_client($this->serverSocketPath, $errorCode, $errorMessage)) {
+            throw new \RuntimeException($errorMessage);
         }
 
-        $this->logger->debug('Sending data {data}', ['data' => $data]);
         $data = $this->getRemoteRenderingCode($componentName, $propsString, $uuid, $registeredStores, $trace);
+
+        $this->logger->debug(
+            'Requesting server side rendering ({server}) with: {data}',
+            ['server' => $sock, 'data' => $data]
+        );
 
         stream_socket_sendto($sock, $data."\0");
 
