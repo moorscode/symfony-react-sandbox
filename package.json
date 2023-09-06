@@ -10,6 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack-serverside": "encore dev --config webpack.config.serverside.js",
     "webpack-dev": "encore dev --config webpack.config.js",
+    "webpack-all": "yarn webpack-dev && yarn webpack-serverside",
     "lint": "eslint assets/js",
     "node-ssr-server": "node external-server.js"
   },

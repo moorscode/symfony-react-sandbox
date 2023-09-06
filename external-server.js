@@ -2,17 +2,19 @@ const net = require("net");
 const fs = require("fs");
 
 const bundlePath = "./var/webpack/";
-const bundleFileName = "server-bundle.js";
+let bundleFileName = "server-bundle.js";
 
 let currentArg;
 
 class Handler {
-    constructor() {
+    constructor()
+    {
         this.queue = [];
         this.initialized = false;
     }
 
-    handle(connection) {
+    handle(connection)
+    {
         const callback = () => {
             connection.setEncoding("utf8");
             let data = [];
@@ -36,9 +38,10 @@ class Handler {
         }
     }
 
-    initialize() {
+    initialize()
+    {
         console.log("Processing " + this.queue.length + " pending requests");
-        var callback = this.queue.pop();
+        let callback = this.queue.pop();
         while (callback) {
             callback();
             callback = this.queue.pop();
@@ -77,8 +80,11 @@ fs.watchFile(bundlePath + bundleFileName, curr => {
     if (curr && curr.blocks && curr.blocks > 0) {
         if (handler.initialized) {
             console.log(
-                "Reloading server bundle must be implemented by restarting the node process!"
+                "Restarting the server because of bundle file changes!"
             );
+
+            unixServer.close();
+            process.exit(1);
 
             return;
         }

@@ -42,23 +42,25 @@ services:
 
   node1:
     build: docker/node
+    restart: unless-stopped
     ports:
       - "3000:3000/tcp"
     environment:
       - PORT=3000
     volumes:
       - ./:/srv/app
-    entrypoint: [ "sh", "-c", "sleep 1 && node ./external-server.js" ]
+    entrypoint: [ "sh", "-c", "node ./external-server.js" ]
 
   node2:
     build: docker/node
+    restart: unless-stopped
     ports:
       - "3001:3001/tcp"
     environment:
       - PORT=3001
     volumes:
       - ./:/srv/app
-    entrypoint: [ "sh", "-c", "sleep 1 && node ./external-server.js" ]
+    entrypoint: [ "sh", "-c", "node ./external-server.js" ]
 
   db:
     image: mysql:5.7
