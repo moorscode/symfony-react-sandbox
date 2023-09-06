@@ -49,7 +49,7 @@ class ExternalReactRenderer implements ReactRendererInterface
         array $registeredStores = [],
         bool $trace = false
     ): RenderResultInterface {
-        if (!$sock = stream_socket_client($this->serverSocketPath, $errorCode, $errorMessage)) {
+        if (!$socket = stream_socket_client($this->serverSocketPath, $errorCode, $errorMessage)) {
             throw new \RuntimeException($errorMessage);
         }
 
@@ -60,14 +60,16 @@ class ExternalReactRenderer implements ReactRendererInterface
             ['server' => $this->serverSocketPath, 'data' => $data]
         );
 
-        stream_socket_sendto($sock, $data."\0");
+        stream_socket_sendto($socket, $data."\0");
 
-        $contents = stream_get_contents($sock);
+        $contents = stream_get_contents($socket);
         if (false === $contents) {
             throw new \RuntimeException('Failed to read content from external renderer.');
         }
 
-        fclose($sock);
+        fclose($socket);
+
+        $this->logger->debug('Server side rendering returned {contents}', ['contents' => $contents]);
 
         $result = json_decode($contents, true);
         if ($result['hasErrors']) {
@@ -81,8 +83,6 @@ class ExternalReactRenderer implements ReactRendererInterface
         if (!$result['hasErrors'] && is_array($evaluated) && array_key_exists('componentHtml', $evaluated)) {
             $evaluated = $evaluated['componentHtml'];
         }
-
-        $this->logger->debug('Server side rendering returned {contents}', ['contents' => $contents]);
 
         return new RenderResult(
             $evaluated,
