@@ -27,8 +27,6 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    Limenius\ReactRenderer\Context\SymfonyContextProvider: ~
-
     service.renderer.a:
         class: App\ReactRenderer\ExternalReactRenderer
         factory: 'App\ReactRenderer\Factory::createRenderer'
@@ -36,7 +34,7 @@ services:
         arguments:
             $serverSocketPath: 'tcp://node1:3000'
             $failLoud: '%limenius_react.fail_loud%'
-            $contextProvider: '@Limenius\ReactRenderer\Context\SymfonyContextProvider'
+            $contextProvider: '@limenius_react.context_provider'
         tags:
             - { name: limenius_react.renderer }
 
