@@ -1822,12 +1822,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moorscode/ReactBundle.git",
-                "reference": "85dfb7609838c6aeae4f6e972555bebff542b510"
+                "reference": "6942197efaba580dc168a3f2f89c2673e113a67f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moorscode/ReactBundle/zipball/85dfb7609838c6aeae4f6e972555bebff542b510",
-                "reference": "85dfb7609838c6aeae4f6e972555bebff542b510",
+                "url": "https://api.github.com/repos/moorscode/ReactBundle/zipball/6942197efaba580dc168a3f2f89c2673e113a67f",
+                "reference": "6942197efaba580dc168a3f2f89c2673e113a67f",
                 "shasum": ""
             },
             "require": {
@@ -1864,6 +1864,10 @@
                 {
                     "name": "nacho",
                     "email": "nacho@limenius.com"
+                },
+                {
+                    "name": "Jip Moors",
+                    "email": "jipmoors@myonlinestore.com"
                 }
             ],
             "description": "Client and Server-side react rendering in a Symfony Bundle",
@@ -1874,7 +1878,7 @@
             "support": {
                 "source": "https://github.com/moorscode/ReactBundle/tree/use-own-fork"
             },
-            "time": "2023-09-06T07:04:56+00:00"
+            "time": "2023-09-07T09:00:42+00:00"
         },
         {
             "name": "limenius/react-renderer",
@@ -1882,12 +1886,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/moorscode/ReactRenderer.git",
-                "reference": "6fba20be3adee3b8ea376c68e71960301ac6105a"
+                "reference": "45af96bb2e4a89bde81204515725ff7e6e5fa54e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moorscode/ReactRenderer/zipball/6fba20be3adee3b8ea376c68e71960301ac6105a",
-                "reference": "6fba20be3adee3b8ea376c68e71960301ac6105a",
+                "url": "https://api.github.com/repos/moorscode/ReactRenderer/zipball/45af96bb2e4a89bde81204515725ff7e6e5fa54e",
+                "reference": "45af96bb2e4a89bde81204515725ff7e6e5fa54e",
                 "shasum": ""
             },
             "require": {
@@ -1941,7 +1945,7 @@
             "support": {
                 "source": "https://github.com/moorscode/ReactRenderer/tree/extract-render-coupling"
             },
-            "time": "2023-09-06T09:33:04+00:00"
+            "time": "2023-09-07T09:36:25+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
