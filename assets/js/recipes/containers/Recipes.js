@@ -9,17 +9,15 @@ const Recipes = ({recipes, base}) => {
         if (!loading) {
             return;
         }
-
         fetch(base + "/api/recipes")
             .then(response => {
-
                 return response.json();
             })
             .then(data => {
                 setShowRecipes(data);
                 setLoading(false);
             });
-    }, []);
+    }, [base, loading]);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -32,7 +30,7 @@ const Recipes = ({recipes, base}) => {
             </ol>
 
             <RecipeSearchList
-                recipes={recipes}
+                recipes={showRecipes}
                 routePrefix={base}
             />
         </>

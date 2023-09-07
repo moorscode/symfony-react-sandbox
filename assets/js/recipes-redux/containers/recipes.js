@@ -9,13 +9,12 @@ const Recipes = ({recipes, baseUrl, fetching, dispatch}) => {
         if (recipes) {
             return;
         }
-
         dispatch(Actions.fetchRecipes(baseUrl));
-    }, []);
+    }, [dispatch, baseUrl, recipes]);
 
-    if (fetching || !recipes) {
-        return <div>Loading...</div>;
-    }
+if (fetching || !recipes) {
+    return <div>Loading...</div>;
+}
 
     return (
         <div>

@@ -3,7 +3,7 @@ import {BrowserRouter} from "react-router-dom";
 import {StaticRouter} from "react-router-dom/server";
 import App from "./RecipesApp";
 
-export default (initialProps, context) => {
+const entry = (initialProps, context) => {
     // We render a different router depending on whether we are rendering server side
     // or client side.
     // Also, for Server side rendering we return an object with:
@@ -26,3 +26,5 @@ export default (initialProps, context) => {
             <App initialProps={initialProps} appContext={context}/>
         </BrowserRouter>
 }
+
+export default entry;

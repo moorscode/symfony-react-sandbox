@@ -19,7 +19,7 @@ const Recipe = ({recipe, base}) => {
                 setShowRecipe(data);
                 setLoading(false);
             });
-    }, []);
+    }, [base, id, loading]);
 
     if (loading) {
         return <div>Loading...</div>;

@@ -16,7 +16,7 @@ const Recipe = ({recipe, fetching, dispatch, baseUrl}) => {
                 Actions.fetchRecipe(id, baseUrl)
             );
         }
-    }, []);
+    }, [dispatch, baseUrl, id, recipe]);
 
     // if we know that we are loading that
     if (

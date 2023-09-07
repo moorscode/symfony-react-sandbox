@@ -20,4 +20,4 @@ const RecipesApp = ({initialProps, appContext}) => {
     );
 };
 
-export default (props) => <RecipesApp {...props} />;
+export default RecipesApp;
