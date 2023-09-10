@@ -2,6 +2,7 @@
 
 namespace App\ReactRenderer;
 
+use App\DataCollector\ExternalServerRequestCollector;
 use Limenius\ReactRenderer\Context\ContextProviderInterface;
 use Limenius\ReactRenderer\Renderer\ReactRendererInterface;
 use Limenius\ReactRenderer\Renderer\RenderResult;
@@ -25,7 +26,8 @@ class ExternalReactRenderer implements ReactRendererInterface
         protected string $serverSocketPath,
         private readonly bool $failLoud,
         private readonly ContextProviderInterface $contextProvider,
-        private readonly LoggerInterface $logger
+        private readonly LoggerInterface $logger,
+        private readonly ExternalServerRequestCollector $externalServerRequestCollector
     ) {
 
         if (!str_contains($this->serverSocketPath, '://')) {
@@ -70,6 +72,8 @@ class ExternalReactRenderer implements ReactRendererInterface
         fclose($socket);
 
         $this->logger->debug('Server side rendering returned {contents}', ['contents' => $contents]);
+
+        $this->externalServerRequestCollector->addRequest($this->serverSocketPath, $data, $contents);
 
         $result = json_decode($contents, true);
         if ($result['hasErrors']) {

@@ -2,6 +2,7 @@
 
 namespace App\ReactRenderer;
 
+use App\DataCollector\ExternalServerRequestCollector;
 use Limenius\ReactRenderer\Context\ContextProviderInterface;
 use Psr\Log\LoggerInterface;
 
@@ -13,10 +14,11 @@ class Factory
     /**
      * Creates a renderer.
      *
-     * @param string                   $serverSocketPath
-     * @param bool                     $failLoud
-     * @param ContextProviderInterface $contextProvider
-     * @param LoggerInterface          $logger
+     * @param string                         $serverSocketPath
+     * @param bool                           $failLoud
+     * @param ContextProviderInterface       $contextProvider
+     * @param LoggerInterface                $logger
+     * @param ExternalServerRequestCollector $externalServerRequestCollector
      *
      * @return ExternalReactRenderer
      */
@@ -24,8 +26,15 @@ class Factory
         string $serverSocketPath,
         bool $failLoud,
         ContextProviderInterface $contextProvider,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        ExternalServerRequestCollector $externalServerRequestCollector
     ): ExternalReactRenderer {
-        return new ExternalReactRenderer($serverSocketPath, $failLoud, $contextProvider, $logger);
+        return new ExternalReactRenderer(
+            $serverSocketPath,
+            $failLoud,
+            $contextProvider,
+            $logger,
+            $externalServerRequestCollector
+        );
     }
 }
