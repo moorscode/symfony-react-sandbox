@@ -17,10 +17,11 @@ class ExternalReactRenderer implements ReactRendererInterface
     /**
      * Constructor.
      *
-     * @param string                   $serverSocketPath
-     * @param bool                     $failLoud
-     * @param ContextProviderInterface $contextProvider
-     * @param LoggerInterface          $logger
+     * @param string                         $serverSocketPath
+     * @param bool                           $failLoud
+     * @param ContextProviderInterface       $contextProvider
+     * @param LoggerInterface                $logger
+     * @param ExternalServerRequestCollector $externalServerRequestCollector
      */
     public function __construct(
         protected string $serverSocketPath,

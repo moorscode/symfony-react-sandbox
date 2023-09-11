@@ -22,7 +22,13 @@ class ExternalServerRequestCollector extends AbstractDataCollector
     {
     }
 
-    public function getRequests(): array {
+    /**
+     * Used in the profiler twig template.
+     *
+     * @return array
+     */
+    public function getRequests(): array
+    {
         return $this->data['requests'];
     }
 
@@ -34,12 +40,26 @@ class ExternalServerRequestCollector extends AbstractDataCollector
         return 'data_collector/template.html.twig';
     }
 
+    /**
+     * Resets the data object.
+     *
+     * @return void
+     */
     public function reset(): void
     {
         $this->data = ['requests' => []];
     }
 
-    public function addRequest(string $serverSocketPath, string $data, string $contents)
+    /**
+     * Adds a server side render request to the stack.
+     *
+     * @param string $serverSocketPath
+     * @param string $data
+     * @param string $contents
+     *
+     * @return void
+     */
+    public function addRequest(string $serverSocketPath, string $data, string $contents): void
     {
         $this->data['requests'][] = [
             'server' => $serverSocketPath,
