@@ -14,7 +14,7 @@
         </svg>
         {# this is the content displayed as a panel in the toolbar #}
         <span class="sf-toolbar-value">{{ collector.requests|length }}</span>
-        <span class="sf-toolbar-label">renders</span>
+        <span class="sf-toolbar-label">render{{ ( collector.requests|length ) == 1 ? '' : 's' }}</span>
     {% endset %}
 
     {# the 'link' value set to 'false' means that this panel doesn't
