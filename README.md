@@ -153,9 +153,9 @@ Currently, the best option is to use an external server in production, since hav
 
 ### Cache
 
-if in your config.prod.yaml or `config/packages/prod/limenius_react.yaml` you add the following configuration, and you have V8js installed, this bundle will be much faster:
+if in your config.prod.yaml or `config/packages/prod/myonlinestore_react.yaml` you add the following configuration, and you have V8js installed, this bundle will be much faster:
 
-    limenius_react:
+    myonlinestore_react:
         serverside_rendering:
             cache:
                 enabled: true

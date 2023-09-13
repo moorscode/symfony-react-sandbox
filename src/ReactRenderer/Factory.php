@@ -3,7 +3,7 @@
 namespace App\ReactRenderer;
 
 use App\DataCollector\ExternalServerRequestCollector;
-use Limenius\ReactRenderer\Context\ContextProviderInterface;
+use MyOnlineStore\ReactRenderer\Context\ContextProviderInterface;
 use Psr\Log\LoggerInterface;
 
 /**

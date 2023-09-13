@@ -1,5 +1,5 @@
 {
-  "name": "limenius/symfony-react-sandbox",
+  "name": "myonlinestore/symfony-react-sandbox",
   "license": "MIT",
   "description": "Symfony React Sandbox, where to explore the integration with React and isomorphic or universal react rendering in Symfony and have profit with Webpack",
   "type": "project",
@@ -23,7 +23,7 @@
     "doctrine/orm": "2.16.2@stable",
     "league/uri": "^7.2",
     "league/uri-components": "^7.0",
-    "limenius/react-bundle": "dev-use-own-fork@dev",
+    "limenius/react-bundle": "dev-replace-limenius@dev",
     "limenius/react-renderer": "@dev",
     "phpdocumentor/reflection-docblock": "5.3.0",
     "phpstan/phpdoc-parser": "1.23.1",

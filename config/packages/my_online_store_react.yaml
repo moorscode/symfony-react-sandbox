@@ -1,4 +1,4 @@
-limenius_react:
+my_online_store_react:
     # Options are "server_side", "client_side" and "both" (default)
     default_rendering: "both"
     serverside_rendering:
