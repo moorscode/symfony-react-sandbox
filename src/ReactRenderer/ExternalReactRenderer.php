@@ -3,10 +3,10 @@
 namespace App\ReactRenderer;
 
 use App\DataCollector\ExternalServerRequestCollector;
-use Limenius\ReactRenderer\Context\ContextProviderInterface;
-use Limenius\ReactRenderer\Renderer\ReactRendererInterface;
-use Limenius\ReactRenderer\Renderer\RenderResult;
-use Limenius\ReactRenderer\Renderer\RenderResultInterface;
+use MyOnlineStore\ReactRenderer\Context\ContextProviderInterface;
+use MyOnlineStore\ReactRenderer\Renderer\ReactRendererInterface;
+use MyOnlineStore\ReactRenderer\Renderer\RenderResult;
+use MyOnlineStore\ReactRenderer\Renderer\RenderResultInterface;
 use Psr\Log\LoggerInterface;
 
 /**

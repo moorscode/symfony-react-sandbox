@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08f699f57d520eb3210a099c44ab5aeb",
+    "content-hash": "30783ee50f023ed9e70cb329c515c4f2",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1563,20 +1563,20 @@
         },
         {
             "name": "league/uri",
-            "version": "7.2.1",
+            "version": "7.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/uri.git",
-                "reference": "8b644f8ff80352530bbc0ea467d5b5a89b60d832"
+                "reference": "36743c3961bb82bf93da91917b6bced0358a8d45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/uri/zipball/8b644f8ff80352530bbc0ea467d5b5a89b60d832",
-                "reference": "8b644f8ff80352530bbc0ea467d5b5a89b60d832",
+                "url": "https://api.github.com/repos/thephpleague/uri/zipball/36743c3961bb82bf93da91917b6bced0358a8d45",
+                "reference": "36743c3961bb82bf93da91917b6bced0358a8d45",
                 "shasum": ""
             },
             "require": {
-                "league/uri-interfaces": "^7.2",
+                "league/uri-interfaces": "^7.3",
                 "php": "^8.1"
             },
             "conflict": {
@@ -1641,7 +1641,7 @@
                 "docs": "https://uri.thephpleague.com",
                 "forum": "https://thephpleague.slack.com",
                 "issues": "https://github.com/thephpleague/uri-src/issues",
-                "source": "https://github.com/thephpleague/uri/tree/7.2.1"
+                "source": "https://github.com/thephpleague/uri/tree/7.3.0"
             },
             "funding": [
                 {
@@ -1649,24 +1649,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-08-30T21:06:57+00:00"
+            "time": "2023-09-09T17:21:43+00:00"
         },
         {
             "name": "league/uri-components",
-            "version": "7.2.1",
+            "version": "7.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/uri-components.git",
-                "reference": "cd187940b9ea1626c2b6e6ab9a5aba5b7c59fc7b"
+                "reference": "a9d155fad59d1d8dedf84d028bc166a1d76568bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/uri-components/zipball/cd187940b9ea1626c2b6e6ab9a5aba5b7c59fc7b",
-                "reference": "cd187940b9ea1626c2b6e6ab9a5aba5b7c59fc7b",
+                "url": "https://api.github.com/repos/thephpleague/uri-components/zipball/a9d155fad59d1d8dedf84d028bc166a1d76568bc",
+                "reference": "a9d155fad59d1d8dedf84d028bc166a1d76568bc",
                 "shasum": ""
             },
             "require": {
-                "league/uri": "^7.2",
+                "league/uri": "^7.3",
                 "php": "^8.1"
             },
             "suggest": {
@@ -1674,6 +1674,7 @@
                 "ext-fileinfo": "to create Data URI from file contennts",
                 "ext-gmp": "to improve IPV4 host parsing",
                 "ext-intl": "to handle IDN host with the best performance",
+                "ext-mbstring": "to use the sorting algorithm of URLSearchParams",
                 "jeremykendall/php-domain-parser": "to resolve Public Suffix and Top Level Domain",
                 "php-64bit": "to improve IPV4 host parsing",
                 "symfony/polyfill-intl-idn": "to handle IDN host via the Symfony polyfill if ext-intl is not present"
@@ -1722,7 +1723,7 @@
                 "docs": "https://uri.thephpleague.com",
                 "forum": "https://thephpleague.slack.com",
                 "issues": "https://github.com/thephpleague/uri-src/issues",
-                "source": "https://github.com/thephpleague/uri-components/tree/7.2.1"
+                "source": "https://github.com/thephpleague/uri-components/tree/7.3.0"
             },
             "funding": [
                 {
@@ -1730,20 +1731,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-08-30T21:06:57+00:00"
+            "time": "2023-09-09T17:21:43+00:00"
         },
         {
             "name": "league/uri-interfaces",
-            "version": "7.2.0",
+            "version": "7.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/uri-interfaces.git",
-                "reference": "43fa071050fcba89aefb5d4789a4a5a73874c44b"
+                "reference": "c409b60ed2245ff94c965a8c798a60166db53361"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/uri-interfaces/zipball/43fa071050fcba89aefb5d4789a4a5a73874c44b",
-                "reference": "43fa071050fcba89aefb5d4789a4a5a73874c44b",
+                "url": "https://api.github.com/repos/thephpleague/uri-interfaces/zipball/c409b60ed2245ff94c965a8c798a60166db53361",
+                "reference": "c409b60ed2245ff94c965a8c798a60166db53361",
                 "shasum": ""
             },
             "require": {
@@ -1806,7 +1807,7 @@
                 "docs": "https://uri.thephpleague.com",
                 "forum": "https://thephpleague.slack.com",
                 "issues": "https://github.com/thephpleague/uri-src/issues",
-                "source": "https://github.com/thephpleague/uri-interfaces/tree/7.2.0"
+                "source": "https://github.com/thephpleague/uri-interfaces/tree/7.3.0"
             },
             "funding": [
                 {
@@ -1814,24 +1815,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-08-30T19:43:38+00:00"
+            "time": "2023-09-09T17:21:43+00:00"
         },
         {
             "name": "limenius/react-bundle",
-            "version": "dev-use-own-fork",
+            "version": "dev-replace-limenius",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moorscode/ReactBundle.git",
-                "reference": "6942197efaba580dc168a3f2f89c2673e113a67f"
+                "reference": "182961b735d66eca47ababa20d55aac032685623"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moorscode/ReactBundle/zipball/6942197efaba580dc168a3f2f89c2673e113a67f",
-                "reference": "6942197efaba580dc168a3f2f89c2673e113a67f",
+                "url": "https://api.github.com/repos/moorscode/ReactBundle/zipball/182961b735d66eca47ababa20d55aac032685623",
+                "reference": "182961b735d66eca47ababa20d55aac032685623",
                 "shasum": ""
             },
             "require": {
-                "limenius/react-renderer": "dev-extract-render-coupling@dev",
+                "limenius/react-renderer": "dev-replace-limenius@dev",
                 "php": "^8.2",
                 "symfony/config": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
                 "symfony/dependency-injection": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
@@ -1846,7 +1847,7 @@
             "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
-                    "Limenius\\ReactBundle\\": ""
+                    "MyOnlineStore\\ReactBundle\\": ""
                 }
             },
             "scripts": {
@@ -1876,22 +1877,22 @@
                 "react"
             ],
             "support": {
-                "source": "https://github.com/moorscode/ReactBundle/tree/use-own-fork"
+                "source": "https://github.com/moorscode/ReactBundle/tree/replace-limenius"
             },
-            "time": "2023-09-07T09:00:42+00:00"
+            "time": "2023-09-13T13:29:37+00:00"
         },
         {
             "name": "limenius/react-renderer",
-            "version": "dev-extract-render-coupling",
+            "version": "dev-replace-limenius",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moorscode/ReactRenderer.git",
-                "reference": "45af96bb2e4a89bde81204515725ff7e6e5fa54e"
+                "reference": "c00863b872bd52f7cc68b104cc93499d866c3c6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moorscode/ReactRenderer/zipball/45af96bb2e4a89bde81204515725ff7e6e5fa54e",
-                "reference": "45af96bb2e4a89bde81204515725ff7e6e5fa54e",
+                "url": "https://api.github.com/repos/moorscode/ReactRenderer/zipball/c00863b872bd52f7cc68b104cc93499d866c3c6e",
+                "reference": "c00863b872bd52f7cc68b104cc93499d866c3c6e",
                 "shasum": ""
             },
             "require": {
@@ -1911,7 +1912,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Limenius\\ReactRenderer\\": "src/Limenius/ReactRenderer"
+                    "MyOnlineStore\\ReactRenderer\\": "src/MyOnlineStore/ReactRenderer"
                 }
             },
             "scripts": {
@@ -1943,9 +1944,9 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/moorscode/ReactRenderer/tree/extract-render-coupling"
+                "source": "https://github.com/moorscode/ReactRenderer/tree/replace-limenius"
             },
-            "time": "2023-09-07T09:36:25+00:00"
+            "time": "2023-09-13T13:20:55+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",

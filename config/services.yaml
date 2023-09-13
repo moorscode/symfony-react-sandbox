@@ -33,10 +33,10 @@ services:
         autowire: true
         arguments:
             $serverSocketPath: 'tcp://node1:3000'
-            $failLoud: '%limenius_react.fail_loud%'
-            $contextProvider: '@limenius_react.context_provider'
+            $failLoud: '%myonlinestore_react.fail_loud%'
+            $contextProvider: '@myonlinestore_react.context_provider'
         tags:
-            - { name: limenius_react.renderer }
+            - { name: myonlinestore_react.renderer }
 
 #    service.renderer.b:
 #        class: App\ReactRenderer\ExternalReactRenderer
@@ -44,7 +44,7 @@ services:
 #        autowire: true
 #        arguments:
 #            $serverSocketPath: 'tcp://node2:3001'
-#            $failLoud: '%limenius_react.fail_loud%'
-#            $contextProvider: '@Limenius\ReactRenderer\Context\SymfonyContextProvider'
+#            $failLoud: '%myonlinestore_react.fail_loud%'
+#            $contextProvider: '@myonlinestore_react.context_provider'
 #        tags:
-#            - { name: limenius_react.renderer }
+#            - { name: myonlinestore_react.renderer }

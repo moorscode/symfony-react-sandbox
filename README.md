@@ -153,14 +153,12 @@ Currently, the best option is to use an external server in production, since hav
 
 ### Cache
 
-if in your config.prod.yaml or `config/packages/prod/limenius_react.yaml` you add the following configuration, and you have V8js installed, this bundle will be much faster:
+if in your config.prod.yaml or `config/packages/prod/my_online_store_react.yaml` you add the following configuration, and you have V8js installed, this bundle will be much faster:
 
-    limenius_react:
+    my_online_store_react:
         serverside_rendering:
             cache:
                 enabled: true
-                # name of your app, it is the key of the cache where the snapshot will be stored.
-                key: "recipes_app"
 
 After the first page render, this will store a snapshot of the JS virtual machine V8js in the cache, so in subsequent visits, your whole JavaScript app doesn't need to be processed again, just the particular component that you want to render.
 
