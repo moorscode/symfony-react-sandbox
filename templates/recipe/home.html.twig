@@ -1,10 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% set recipes = react_component_array('RecipesApp', {'props': props}) %}
-{% block title %}
-{{ recipes.title is defined ? recipes.title | raw : '' }}
-{% endblock title %}
-
 {% block body %}
-{{ recipes.componentHtml | raw }}
+    <h1>Client side</h1>
+    {{ react_component('RecipesApp', props, 'client_side') }}
+
+    <hr/>
+
+    <h1>Server side</h1>
+    {{ react_component('RecipesApp', props, 'server_side') }}
+
+    <hr/>
+
+    <h1>Both sides</h1>
+    {{ react_component('RecipesApp', props, 'both') }}
 {% endblock %}

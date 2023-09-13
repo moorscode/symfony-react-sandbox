@@ -1,5 +1,7 @@
 limenius_react:
+    default_rendering: 'both'
     serverside_rendering:
+        fail_loud: false
+        trace: false
         cache:
             enabled: true
-            key: "recipes_app"

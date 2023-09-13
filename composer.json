@@ -1,67 +1,96 @@
 {
-    "name": "limenius/symfony-react-sandbox",
-    "license": "MIT",
-    "description": "Symfony React Sandbox, where to explore the integration with React and isomorphic or universal react rendering in Symfony and have profit with Webpack",
-    "type": "project",
-    "require": {
-        "php": "^7.1.3",
-        "doctrine/doctrine-fixtures-bundle": "^3.0",
-        "league/uri": "^5.2",
-        "lexik/jwt-authentication-bundle": "^2.4",
-        "limenius/liform-bundle": "^0.13.0",
-        "limenius/react-bundle": "^4.0",
-        "sensio/framework-extra-bundle": "^5.1",
-        "symfony/asset": "^4.0",
-        "symfony/console": "^4.0",
-        "symfony/flex": "^1.0",
-        "symfony/form": "^4.0",
-        "symfony/framework-bundle": "^4.0",
-        "symfony/orm-pack": "^1.0",
-        "symfony/serializer-pack": "^1.0",
-        "symfony/twig-bundle": "^4.0",
-        "symfony/validator": "^4.0",
-        "symfony/web-server-bundle": "^4.0",
-        "symfony/webpack-encore-bundle": "^1.0",
-        "symfony/yaml": "^4.0"
+  "name": "limenius/symfony-react-sandbox",
+  "license": "MIT",
+  "description": "Symfony React Sandbox, where to explore the integration with React and isomorphic or universal react rendering in Symfony and have profit with Webpack",
+  "type": "project",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/moorscode/ReactBundle"
     },
-    "require-dev": {
-        "symfony/dotenv": "^4.0"
-    },
-    "config": {
-        "preferred-install": {
-            "*": "dist"
-        },
-        "sort-packages": true
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
-        },
-        "post-install-cmd": [
-            "@auto-scripts"
-        ],
-        "post-update-cmd": [
-            "@auto-scripts"
-        ]
-    },
-    "conflict": {
-        "symfony/symfony": "*"
-    },
-    "extra": {
-        "symfony": {
-            "id": "01C13HZRM7KRGS955H79B9D35V",
-            "allow-contrib": false
-        }
+    {
+      "type": "vcs",
+      "url": "https://github.com/moorscode/ReactRenderer"
     }
+  ],
+  "require": {
+    "php": "^8.2",
+    "doctrine/annotations": "2.0.1",
+    "doctrine/doctrine-bundle": "2.10.2",
+    "doctrine/doctrine-fixtures-bundle": "3.4.4",
+    "doctrine/doctrine-migrations-bundle": "3.2.4",
+    "doctrine/migrations": "3.6.0@stable",
+    "doctrine/orm": "2.16.2@stable",
+    "league/uri": "^7.2",
+    "league/uri-components": "^7.0",
+    "limenius/react-bundle": "dev-use-own-fork@dev",
+    "limenius/react-renderer": "@dev",
+    "phpdocumentor/reflection-docblock": "5.3.0",
+    "phpstan/phpdoc-parser": "1.23.1",
+    "symfony/asset": "v6.3.0",
+    "symfony/cache": "v6.3.4",
+    "symfony/console": "v6.3.4",
+    "symfony/dotenv": "v6.3.0",
+    "symfony/expression-language": "v6.3.0",
+    "symfony/flex": "2.x-dev",
+    "symfony/framework-bundle": "v6.3.4",
+    "symfony/property-access": "v6.3.2",
+    "symfony/property-info": "v6.3.0",
+    "symfony/routing": "v6.3.3",
+    "symfony/serializer": "v6.3.4",
+    "symfony/translation": "v6.3.3",
+    "symfony/twig-bridge": "v6.3.2",
+    "symfony/twig-bundle": "v6.3.0",
+    "symfony/validator": "v6.3.4",
+    "symfony/webpack-encore-bundle": "v2.0.1",
+    "symfony/yaml": "v6.3.3",
+    "twig/twig": "v3.7.1"
+  },
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true,
+    "allow-plugins": {
+      "ocramius/package-versions": true,
+      "symfony/flex": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "conflict": {
+    "symfony/symfony": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "cs": "@php vendor/bin/phpcs -s",
+    "lint": "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --show-deprecated --exclude vendor --exclude .git",
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    },
+    "post-install-cmd": [
+      "@auto-scripts"
+    ],
+    "post-update-cmd": [
+      "@auto-scripts"
+    ]
+  },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "escapestudios/symfony2-coding-standard": "^3.13",
+    "php-parallel-lint/php-parallel-lint": "^1.3",
+    "phpcompatibility/php-compatibility": "^9.3",
+    "symfony/stopwatch": "v6.3.0",
+    "symfony/web-profiler-bundle": "v6.3.2"
+  }
 }
