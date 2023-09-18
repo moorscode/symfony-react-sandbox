@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Client side</h1>
-    {{ react_component('RecipesApp', props, 'client_side') }}
+
+    <h1>Both sides</h1>
+    {{ react_component('RecipesApp', props, 'both') }}
 
     <hr/>
 
@@ -11,6 +12,7 @@
 
     <hr/>
 
-    <h1>Both sides</h1>
-    {{ react_component('RecipesApp', props, 'both') }}
+    <h1>Client side</h1>
+    {{ react_component('RecipesApp', props, 'client_side') }}
+
 {% endblock %}

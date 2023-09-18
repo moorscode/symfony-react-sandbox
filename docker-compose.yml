@@ -1,12 +1,49 @@
-version: "3.4"
+version: "3.8"
 
 services:
+  webserver:
+    build:
+      context: docker/nginx
+#    build:
+#      context: .
+#      target: caddy_base
+#    command: [ "caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile", "--watch" ]
+    depends_on:
+      - php
+    networks:
+      - default
+      - ssr
+    environment:
+      SERVER_NAME: ${SERVER_NAME:-localhost}
+    restart: unless-stopped
+    volumes:
+      - php_socket:/var/run/php
+      - caddy_data:/data
+      - caddy_config:/config
+      - ./public:/srv/app/public:ro
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    expose: [ 80 ]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ssr.entrypoints=https"
+      - "traefik.http.routers.ssr.rule=Host(`ssr.myofflinestore.com`)"
+      - "traefik.http.routers.ssr.tls=true"
+
   php:
-    image: ${IMAGES_PREFIX:-}app-php
+    build:
+      context: .
+      target: php_dev
     restart: unless-stopped
     volumes:
       - php_socket:/var/run/php
       - ./:/srv/app
+      - ./docker/php/conf.d/app.dev.ini:/usr/local/etc/php/conf.d/app.dev.ini:ro
+
+    networks:
+      - ssr
+    extra_hosts:
+      # Ensure that host.docker.internal is correctly defined on Linux
+      - host.docker.internal:host-gateway
     healthcheck:
       interval: 10s
       timeout: 3s
@@ -16,35 +53,16 @@ services:
     environment:
       TRUSTED_PROXIES: ${TRUSTED_PROXIES:-127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
       TRUSTED_HOSTS: ^${SERVER_NAME:-example\.com|localhost}|caddy$$
-
-  caddy:
-    image: ${IMAGES_PREFIX:-}app-caddy
-    depends_on:
-      - php
-    environment:
-      SERVER_NAME: ${SERVER_NAME:-localhost}, caddy:80
-      MERCURE_PUBLISHER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
-      MERCURE_SUBSCRIBER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
-    restart: unless-stopped
-    volumes:
-      - php_socket:/var/run/php
-      - caddy_data:/data
-      - caddy_config:/config
-    expose:
-      - 80
-      - 443/tcp
-      - 443/udp
-    ports:
-      # HTTPS
-      - target: 443
-        published: ${HTTPS_PORT:-443}
-        protocol: tcp
+      # See https://xdebug.org/docs/all_settings#mode
+      XDEBUG_MODE: "${XDEBUG_MODE:-off}"
 
   node1:
     build: docker/node
     restart: unless-stopped
     ports:
       - "3000:3000/tcp"
+    networks:
+      - ssr
     environment:
       - PORT=3000
     volumes:
@@ -54,6 +72,8 @@ services:
   node2:
     build: docker/node
     restart: unless-stopped
+    networks:
+      - ssr
     ports:
       - "3001:3001/tcp"
     environment:
@@ -66,6 +86,8 @@ services:
     image: mysql:5.7
     platform: linux/amd64
     restart: always
+    networks:
+      - ssr
     expose: [ 3306:3306 ]
     volumes:
       - mydb:/var/lib/mysql
@@ -91,3 +113,9 @@ volumes:
   node_socket:
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
+
+networks:
+  default:
+    name: gateway
+    external: true
+  ssr:

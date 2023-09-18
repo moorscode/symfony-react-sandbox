@@ -103,21 +103,3 @@ RUN set -eux; \
 	composer dump-env prod; \
 	composer run-script --no-dev post-install-cmd; \
 	chmod +x bin/console; sync;
-
-
-# Base Caddy image
-FROM caddy_upstream AS caddy_base
-
-ARG TARGETARCH
-
-WORKDIR /srv/app
-
-# Download Caddy compiled with the Mercure and Vulcain modules
-ADD --chmod=500 https://caddyserver.com/api/download?os=linux&arch=$TARGETARCH&p=github.com/dunglas/mercure/caddy&p=github.com/dunglas/vulcain/caddy /usr/bin/caddy
-
-COPY --link docker/caddy/Caddyfile /etc/caddy/Caddyfile
-
-# Prod Caddy image
-FROM caddy_base AS caddy_prod
-
-COPY --from=php_prod --link /srv/app/public public/
