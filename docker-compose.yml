@@ -3,31 +3,31 @@ version: "3.8"
 services:
   webserver:
     build:
-      context: .
-      target: caddy_base
-    command: [ "caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile", "--watch" ]
+      context: docker/nginx
+#    build:
+#      context: .
+#      target: caddy_base
+#    command: [ "caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile", "--watch" ]
     depends_on:
       - php
     networks:
       - default
       - ssr
     environment:
-      SERVER_NAME: ${SERVER_NAME:-localhost}, caddy:80
+      SERVER_NAME: ${SERVER_NAME:-localhost}
     restart: unless-stopped
     volumes:
       - php_socket:/var/run/php
       - caddy_data:/data
       - caddy_config:/config
       - ./public:/srv/app/public:ro
-      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     expose: [ 80 ]
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ssr.entrypoints=https"
       - "traefik.http.routers.ssr.rule=Host(`ssr.myofflinestore.com`)"
       - "traefik.http.routers.ssr.tls=true"
-      - "traefik.http.routers.ssr.service=ssr"
-      - "traefik.http.services.ssr.loadbalancer.server.port=80"
 
   php:
     build:
